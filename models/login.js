@@ -1,4 +1,4 @@
-var connection = require('./config/db');
+var connection = require('../config/db');
 var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
@@ -16,8 +16,12 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
-    response.sendFile(path.join(__dirname + '/login.html'));
+    response.sendFile(path.join(__dirname + '/../views/login.html'));
 });
+
+app.get('/Signup',function (request,response) {
+    response.sendFile(path.join(__dirname + '/../views/signup.html'));
+})
 
 app.post('/auth', function(request, response) {
     var mail = request.body.mail;
