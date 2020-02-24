@@ -20,9 +20,8 @@ app.get('/', function(request, response) {
 });
 
 app.post('/auth', function(request, response) {
-    console.log(request.body);
     var mail = request.body.mail;
-    var mdp = request.body.password;
+    var mdp = request.body.mdp;
     if (mail && mdp) {
         connection.query('SELECT * FROM Personne WHERE mail = ? AND mdp = ?', [mail, mdp], function(error, results, fields) {
             if (results.length > 0) {
@@ -42,7 +41,7 @@ app.post('/auth', function(request, response) {
 
 app.get('/home', function(request, response) {
     if (request.session.loggedin) {
-        response.send('Welcome back, ' + request.session.username + '!');
+        response.send('Welcome back, ' + request.session.mail + '!');
     } else {
         response.send('Please login to view this page!');
     }
