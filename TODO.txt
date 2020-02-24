@@ -1,0 +1,18 @@
+fixer le css
+mettre le css dans un dossier
+sécuriser la connexion
+faire l'authentification
+
+
+faire les profils :
+	- accès mail caché si pas autorisé
+	- photo de profil
+	- affiche nom et prénom
+	- résultats des tests
+
+faire une navbar 
+	- accès aux tests
+	-faire des recherches
+
+page des tests
+	- 2 tests différents
