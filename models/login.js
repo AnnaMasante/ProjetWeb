@@ -1,21 +1,41 @@
+//Imports
 var connection = require('../config/db');
 var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var path = require('path');
+var apiRouter = require('./apiRouter').router;
 
 
-
+//instancier un serveur
 var app=express();
+
+
+
 app.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true
 }));
-app.use(bodyParser.urlencoded({extended : true}));
-app.use(bodyParser.json());
 
-app.get('/', function(request, response) {
+app.use(bodyParser.urlencoded({extended : true}));//forcer le parse dans des objets inclus dans l'autre
+app.use(bodyParser.json()); //On veut parser du json
+
+
+//On configure les routes
+app.get('/', function(req,res){
+    res.setHeader('Content-Type','text/html');
+    res.status(200).send('<h1> Bonjour sur le serveur</h1>');
+});
+
+app.use('/api/',apiRouter);
+
+
+//Lancement serveur
+app.listen(3000,function(){
+    console.log('Server en écoute');
+});
+/*app.get('/', function(request, response) {
     response.sendFile(path.join(__dirname + '/../views/login.html'));
 });
 
@@ -52,4 +72,4 @@ app.get('/home', function(request, response) {
     response.end();
 });
 
-app.listen(3000);
+app.listen(3000);*/

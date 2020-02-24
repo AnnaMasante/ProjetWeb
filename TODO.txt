@@ -16,3 +16,11 @@ faire une navbar
 
 page des tests
 	- 2 tests différents
+
+Fonctionnement AI
+Si le serveur est d'accord avec les données, il me renvoie un token, 'est une sorte de Carte d'identité qui permettra de passer les contrôles
+Jeton JsonWebToken
+ -> créer et générier un token
+	algo de chiffrement et type token
+	payload : données et champs réservés (nom ...)
+	signature : Falsifier ?
