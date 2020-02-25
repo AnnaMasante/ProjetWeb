@@ -2,7 +2,7 @@ fixer le css
 mettre le css dans un dossier
 sécuriser la connexion
 faire l'authentification
-
+Rajouter le sexe
 
 faire les profils :
 	- accès mail caché si pas autorisé
