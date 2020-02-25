@@ -17,7 +17,7 @@ module.exports = {
         return res.status(501).json({'error':'mail invalide'});
     }
 
-        asyncLib.waterfall([
+        asyncLib.waterfall([//On arrête si je trouve une erreur
             function(done) {
                 models.Personne.findOne({
                     where: { mail: mail }
@@ -45,7 +45,7 @@ module.exports = {
                     return res.status(403).json({ 'error': 'invalid password' });
                 }
             }
-        ], function(userFound) {
+        ], function(userFound) { //Il n'y a pas eu d'erreurs
             if (userFound) {
                 return res.status(201).json({
                     'userId': userFound.id,
@@ -54,40 +54,40 @@ module.exports = {
             } else {
                 return res.status(500).json({ 'error': 'cannot log on user' });
             }
+                var userId      = jwtUtils.getUserId(headerAuth);
+
+                if (userId < 0)
+                    return res.status(400).json({ 'error': 'wrong token' });
+
+                models.User.findOne({
+                    attributes: [ 'id', 'mail', 'mail'],
+                    where: { id: userId }
+                }).then(function(user) {
+                    if (user) {
+                        res.status(201).json(user);
+                    } else {
+                        res.status(404).json({ 'error': 'user not found' });
+                    }
+                }).catch(function(err) {
+                    res.status(500).json({ 'error': 'cannot fetch user' });
+                });
+            },
+            updateUserProfile: function(req, res) {
+            // Getting auth header
+            var headerAuth  = req.headers['authorization'];
+            var userId      = jwtUtils.getUserId(headerAuth);
+
+            // Params
+
         });
     },
     getUserProfile: function(req, res) {
         // Getting auth header
-        var headerAuth  = req.headers['authorization'];
-        var userId      = jwtUtils.getUserId(headerAuth);
-
-        if (userId < 0)
-            return res.status(400).json({ 'error': 'wrong token' });
-
-        models.User.findOne({
-            attributes: [ 'id', 'mail', 'mail'],
-            where: { id: userId }
-        }).then(function(user) {
-            if (user) {
-                res.status(201).json(user);
-            } else {
-                res.status(404).json({ 'error': 'user not found' });
-            }
-        }).catch(function(err) {
-            res.status(500).json({ 'error': 'cannot fetch user' });
-        });
-    },
-    updateUserProfile: function(req, res) {
-        // Getting auth header
-        var headerAuth  = req.headers['authorization'];
-        var userId      = jwtUtils.getUserId(headerAuth);
-
-        // Params
-        var bio = req.body.bio;
+        var headerAuth  = req.headers['authorization'];var bio = req.body.bio;
 
         asyncLib.waterfall([
             function(done) {
-                models.User.findOne({
+                models.Personne.findOne({
                     attributes: ['id', 'bio'],
                     where: { id: userId }
                 }).then(function (userFound) {
