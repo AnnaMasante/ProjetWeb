@@ -6,7 +6,7 @@ var path = require('path');
 
 
 
-var app=express();
+const app=express();
 app.use(session({
     secret: 'secret',
     resave: true,
