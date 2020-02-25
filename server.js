@@ -1,15 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
-
+var path = require('path');
 const app = express();
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const sequelize = new Sequelize({
     database:'projet_web',
+    host:'localhost',
     username:'root',
+    port:'3000',
     password:'4437',
     dialect:'mysql',
 });
@@ -62,7 +65,7 @@ Personne.sync()
     .catch(err => console.log('Oups ça ne marche pas'));
 
 //Fonctions d'aide
-const createUSer = async({idPers,prenom,nom,numTel, enRecherche,mail,mdp,sexe})=>{
+const createUser = async({idPers,prenom,nom,numTel, enRecherche,mail,mdp,sexe})=>{
     return await Personne.create({idPers,prenom,nom,numTel, enRecherche,mail,mdp,sexe});
 };
 
@@ -75,6 +78,14 @@ const getUser = async obj => {
         where:obj,
     });
 };
+//register route => INSCRIPTION
+app.post('/register', function(req,res,next){
+    const {prenom, nom, numTel,enRecherche,mail,mdp,sexe} = req.body;
+    createUser({prenom, nom, numTel,enRecherche,mail,mdp,sexe}).then(Personne=>
+
+        res.json({Personne, msg:"Compte créé"})
+    );
+});
     //On démarre le serveur
 app.listen(3000, function(){
     console.log('Express running sur le port 3000');
