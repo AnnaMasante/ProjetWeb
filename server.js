@@ -130,8 +130,7 @@ app.post('/register', function (req, res, next) {
         res.json({Personne, msg: "Mots de passe invalides"});
     }
     //console.log({prenom, nom, numTel, enRecherche, mail, mdp, mdp1, sexe});
-});
-//LOGIN => ROUTE
+    });
 
 app.post('/login', async function (req, res, next) {
     const mail = req.body.mail;
