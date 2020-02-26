@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)https://bootstrapstudio.io/demo/ -->
+<html id="bstudio"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		
+		<meta http-equiv="Content-Security-Policy" content="script-src &#39;self&#39; &#39;unsafe-eval&#39;">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="referrer" content="no-referrer">
+
+		<link rel="stylesheet" href="./codemirror.css">
+		<link rel="stylesheet" href="./codemirror-bstudio.css">
+		<link rel="stylesheet" href="./styles.css">
+	<link rel="stylesheet" href="./glyphicons.css"><link rel="stylesheet" href="./fontawesome-all.min.css"><link rel="stylesheet" href="./font-awesome.min.css"><link rel="stylesheet" href="./fontawesome5-overrides.min.css"><link rel="stylesheet" href="./ionicons.min.css"><link rel="stylesheet" href="./typicons.min.css"><link rel="stylesheet" href="./simple-line-icons.min.css"><link rel="stylesheet" href="./line-awesome.min.css"></head>
+<body class="">
+
+<div id="startscreen" class="welcome">
+
+	<div id="loading-view">
+		<div class="logo"></div>
+	</div>
+
+	<div id="activation-view">
+		<div class="logo"></div>
+
+		<form class="license-form">
+			
+			<h2>Enter Your License</h2>
+
+			<div class="row">
+				<label for="license-field">License Key</label>
+				<input type="text" name="license" id="license-field" spellcheck="false">
+			</div>
+
+			<div class="row">
+				<label for="computer-name-field">Name This Computer</label>
+				<input type="text" name="computer-name" id="computer-name-field" placeholder="e.g. My Laptop" maxlength="30">
+			</div>
+
+			<div class="row cb">
+				<label class="pretty-checkbox-regular"><input type="checkbox" id="agree"><span></span><span> I agree with the <a href="https://bootstrapstudio.io/pages/license" class="link">license agreement</a>.</span></label>
+			</div>
+
+			<div class="row">
+				<input type="hidden" id="device-field" name="device" value="">
+				<button type="submit" class="button darkgray submit disabled">Proceed</button>
+			</div>
+
+		</form>
+	</div>
+
+	<div id="welcome-view">
+		<div class="left-col">
+			<div class="wrapper">
+				<div class="logo"></div>
+				<p class="app-title">Bootstrap Studio</p>
+				<p class="version">Version 5.0.2</p>
+				<div class="buttons">
+					<div class="button create">New Design</div>
+					<div class="button open">Open</div>
+				</div>
+			</div>
+		</div>
+		<div class="right-col">
+			<div class="top-content">
+				<h1 class="tab recent-tab selected">Recent Designs</h1>
+				<h1 class="tab tutorials-tab">Tutorials</h1>
+			</div>
+			<div class="bot-content">
+				<div class="content-wrapper">
+					<div class="search-wrapper" style="display: none;">
+						<input type="search" class="search-bar" placeholder="Search Designs">
+						<i class="material-icons search-icon">search</i>
+					</div>
+					<div class="recent-designs"><div class="error-message">
+							<div class="icon "></div>
+							<h2>No recent designs yet</h2>
+							<p>
+								For an introduction to Bootstrap Studio<br>open our interactive guide below.</p><div class="button tutorial">Getting Started Guide</div>
+							<p></p>
+						</div></div>
+					<div class="tutorials" style="display: none;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="message-view">
+		<div class="top row">
+			<div class="logo"></div>
+		</div>
+		<div class="bottom row">
+			<p class="message-line"></p>
+		</div>
+	</div>
+</div>
+
+<div id="menu"><div class="menu-entry new active" title="New">
+				<div class="wrapper">
+					<i class="material-icons">insert_drive_file</i><span class="name">New</span>
+				</div>
+				<span class="arrow" style="display: none;"></span>
+			</div><div class="menu-entry open active" title="Open">
+				<div class="wrapper">
+					<i class="material-icons">folder</i><span class="name">Open</span>
+				</div>
+				<span class="arrow" style="display: none;"></span>
+			</div><div class="menu-entry save active" title="Save">
+				<div class="wrapper">
+					<i class="material-icons">save</i><span class="name">Save</span>
+				</div>
+				<span class="arrow" style="display: none;"></span>
+			</div><div class="menu-entry export active has-arrow" title="Export">
+				<div class="wrapper">
+					<i class="material-icons">flash_on</i><span class="name">Export</span>
+				</div>
+				<span class="arrow" style="display: block;"></span>
+			</div><div class="menu-entry settings active" title="Settings">
+				<div class="wrapper">
+					<i class="material-icons">settings</i><span class="name">Settings</span>
+				</div>
+				<span class="arrow" style="display: none;"></span>
+			</div><div class="menu-entry undo active" title="Undo">
+				<div class="wrapper">
+					<i class="material-icons">undo</i><span class="name">Undo</span>
+				</div>
+				<span class="arrow" style="display: none;"></span>
+			</div><div class="menu-entry redo" title="Redo">
+				<div class="wrapper">
+					<i class="material-icons">redo</i><span class="name">Redo</span>
+				</div>
+				<span class="arrow" style="display: none;"></span>
+			</div><div class="menu-entry preview active has-arrow" title="Preview">
+				<div class="wrapper">
+					<i class="material-icons">movie</i><span class="name">Preview</span>
+				</div>
+				<span class="arrow" style="display: block;"></span>
+			</div><div class="menu-entry publish active has-arrow" title="Publish">
+				<div class="wrapper">
+					<i class="material-icons">cloud_upload</i><span class="name">Publish</span>
+				</div>
+				<span class="arrow" style="display: block;"></span>
+			</div></div>
+
+<div id="main">
+
+	<div id="left-panel" class="panel-container" style="width: 300px;"><div class="handle vertical resize-panel" data-type="e"></div><div class="panel-group" tabindex="0" style="height: 508.4px;"><div class="tabs"><div class="tab-squeeze"><div class="tab-holder"><div title="Studio" class="tab studio active"><div><i class="material-icons">extension</i><span>Studio</span></div></div><div title="Online" class="tab online"><div><i class="material-icons">wifi</i><span>Online</span></div></div></div></div></div>
+				<div class="content"><div class="panel tree-holder component-panel"><div class="content"><div class="search">
+				<input type="search" required="" placeholder="Search components">
+				<i class="material-icons search-icon">search</i>
+			</div>
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+			<div class="list"><span class="item"><u></u><b>Nav</b></span><span class="item"><u></u><b>Navbar</b></span><span class="item"><u></u><b>Navigation Clean</b></span><span class="item"><u></u><b>Navigation with Button</b></span><span class="item"><u></u><b>Navigation with Search</b></span><span class="item"><u></u><b>Card With Navigation</b></span></div><div class="suggested" style="display: none;">
+				<hr>
+				<div class="name"><span>Suggested</span> <span class="collapse"></span></div>
+				<div class="suggested-list"></div>
+			</div></div></div></div>
+			<div class="handle resize-panel-group visible horizontal"></div></div><div class="panel-group" tabindex="0"><div class="tabs"><div class="tab-squeeze"><div class="tab-holder"><div title="Overview" class="tab overview active"><div><i class="material-icons">view_list</i><span>Overview</span></div></div></div></div></div>
+				<div class="content"><div class="panel tree-holder overview-panel"><div class="content"><div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+			<div class="list"><span class=""><i class="down"></i><b>HTML</b><u class="material-icons lock" title="Component is Locked">lock_outline</u></span><div class="subtree" style="display: block;"><span class="selected"><i class="down"></i><b>Body</b><u class="material-icons lock" title="Component is Locked">lock_outline</u></span><div class="subtree" style="display: block;"><span><i class="down"></i><b>Navbar</b></span><div class="subtree" style="display: block;"><span><b>Navbar Brand</b></span><div class="subtree"></div><span><i></i><b>Navbar Toggle</b></span><div class="subtree"><span><b>Span</b></span><div class="subtree"></div><span><b>Span</b></span></div><span><i class="down"></i><b data-label="#navcol-1" title="#navcol-1">Navbar Collapse</b></span><div class="subtree" style="display: block;"><span><i class="down"></i><b>Nav</b></span><div class="subtree" style="display: block;"><span><i class="down"></i><b>Nav Item</b></span><div class="subtree" style="display: block;"><span><b>Link</b></span><div class="subtree"></div></div><span><i class="down"></i><b>Nav Item</b></span><div class="subtree" style="display: block;"><span><b>Link</b></span><div class="subtree"></div></div><span><i class="down"></i><b>Nav Item</b></span><div class="subtree" style="display: block;"><span><b>Link</b></span><div class="subtree"></div></div></div></div></div></div></div></div></div></div></div>
+			</div></div>
+
+	<div id="center-panel" class="panel-container">
+		<div id="stage" class="panel-group" tabindex="0">
+			<div id="toolbars">
+
+				<div id="tab-bar" class="bar">
+					<div class="tab-scroll">
+						<div class="tab-holder"><div class="tab active unsaved"><span class="title" title="">profil</span><span class="close"></span></div></div>
+					</div>
+				</div>
+
+				<div id="tool-bar" class="bar">
+					<span class="button-zoom zoom-in active" data-id="zoom-in" title="Zoom In"><i class="material-icons">zoom_in</i></span>
+					<span class="button-zoom zoom-out active" data-id="zoom-out" title="Zoom Out"><i class="material-icons">zoom_out</i></span>
+					
+					<span class="rotate-canvas active" data-id="rotate-canvas" title="Flip Canvas"><i class="material-icons">screen_rotation</i></span>
+
+					<span class="fit-to-canvas active" data-id="fit-to-canvas" title="Fit to Canvas"><i class="material-icons">aspect_ratio</i></span>
+
+					<span class="canvas-settings active" data-id="canvas-settings" title="View Options"><i class="material-icons">layers</i></span>
+
+					<span class="info-container">
+						<span class="info device-selection">992px × 719px @ 100%</span>
+					</span>
+
+					<span class="bar component-bar"></span>
+
+					<div class="page-selection">index.html</div>
+
+					<div class="devices"><span class="button-size xs" data-id="xs" title="XS"><i class="material-icons">phone_iphone</i></span><span class="button-size sm" data-id="sm" title="SM"><i class="material-icons">tablet_mac</i></span><span class="button-size md" data-id="md" title="MD"><i class="material-icons">tablet</i></span><span class="button-size lg active" data-id="lg" title="LG"><i class="material-icons">laptop_mac</i></span><span class="button-size xl" data-id="xl" title="XL"><i class="material-icons">desktop_windows</i></span></div>
+
+				</div>
+
+				<div id="component-tool-bar" class="bar component-bar" style="display: block;"></div>
+
+			</div>
+
+			<section id="canvas" class="">
+
+				<div class="sizer">
+
+					<div class="view-wrapper" style="width: 992px; height: 719px;">
+
+						<div class="ui-offset" style="width: 992px; height: 719px; margin-top: -359.5px; margin-left: -496px;"><iframe tabindex="-1" style="transform: scale(1); width: 992px; height: 719px;" src="./saved_resource(1).html"></iframe>
+
+							<div class="resize-handles">
+								<div class="handle resize-canvas visible vertical reverse" data-type="w"></div>
+								<div class="handle resize-canvas visible vertical" data-type="e"></div>
+								<div class="handle resize-canvas visible horizontal reverse" data-type="n"></div>
+								<div class="handle resize-canvas visible horizontal" data-type="s"></div>
+								<div class="handle resize-canvas visible both se" data-type="se"></div>
+								<div class="handle resize-canvas visible both nw" data-type="nw"></div>
+								<div class="handle resize-canvas visible both ne" data-type="ne"></div>
+								<div class="handle resize-canvas visible both sw" data-type="sw"></div>
+							</div>
+							<div class="ui-overlay" style="width: 992px; height: 719px;">
+								<div class="grid"></div>
+								<div class="focus-bar-container"><div class="focus-bar" style="top: 0px; left: 0px;"><span title="Select Parent"><i class="material-icons">arrow_upward</i></span></div></div>
+								<div class="highlights"><div class="focus" style="width: 992px; height: 650px; top: 0px; left: 0px; border-width: 1px;"></div></div>
+								<div class="line-container">
+									<div class="line" style="display: none;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="widget-drawer" style="display: none;">
+					<div class="widget-toggler"><span></span></div>
+					<div class="widget-wrapper">
+						<div class="content">
+							<div class="list"></div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+		</div>
+
+		<div id="editor-panel" class="expanded" style="height: 446.5px;">
+
+			<div class="handle horizontal" data-type="n" data-min="24" data-toggle-class="expanded" data-toggle-enable="31" data-toggle-disable="80" data-target="#editor-panel"></div>
+
+			<div class="panel">
+
+				<div id="left-editor" tabindex="0">
+					<div class="tabs editor-tabs">
+						<div class="tab-scroll">
+							<div class="tab-holder"><div class="tab active">
+			<span class="title">HTML</span>
+			<span class="close"></span>
+		</div></div>
+						</div>
+					</div>
+
+					<div class="editor-content"><div class="html-tree editor">
+				<div class="toolbar">
+					<div class="search-controls">
+						<div class="controls">
+							<input type="search" class="search-input" placeholder="Find elements by text or CSS selector">
+							<span class="number-results" style="display: none;"></span>
+							<div class="split-button">
+								<a class="button darkgray button-filter regex" title="Use Regex">.*</a><a class="button darkgray button-filter match-case" title="Match case">Aa</a>
+							</div>
+							<div class="split-button">
+								<a class="button darkgray previous icon disabled" title="Previous"><i class="material-icons">keyboard_arrow_up</i></a><a class="button darkgray next icon disabled" title="Next"><i class="material-icons">keyboard_arrow_down</i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content" tabindex="0"><span><i class="down"></i><b class="expanded"><strong class="open-tag"><tag-name>&lt;html</tag-name>&gt;</strong><em>...</em><strong class="close-tag">&lt;/html&gt;</strong></b></span><div style="display: block;"><span><i></i><b><strong class="open-tag"><tag-name>&lt;head</tag-name>&gt;</strong><em>...</em><strong class="close-tag">&lt;/head&gt;</strong></b></span><div><span><b><strong class="open-tag"><tag-name>&lt;meta</tag-name> <attr-name>charset=</attr-name><attr-value>"utf-8"</attr-value> /&gt;</strong><em></em></b></span><span><b><strong class="open-tag"><tag-name>&lt;meta</tag-name> <attr-name>name=</attr-name><attr-value>"viewport"</attr-value> <attr-name>content=</attr-name><attr-value>"width=device-width, initial-scale=1.0, shrink-to-fit=no"</attr-value> /&gt;</strong><em></em></b></span><span><b><strong class="open-tag"><tag-name>&lt;title</tag-name>&gt;</strong><em>profil</em><strong class="close-tag">&lt;/title&gt;</strong></b></span><span><b><strong class="open-tag"><tag-name>&lt;link</tag-name> <attr-name>rel=</attr-name><attr-value>"stylesheet"</attr-value> <attr-name>href=</attr-name><attr-value>"bootstrap.min.css"</attr-value> /&gt;</strong><em></em></b></span><span><b><strong class="open-tag"><tag-name>&lt;link</tag-name> <attr-name>rel=</attr-name><attr-value>"stylesheet"</attr-value> <attr-name>href=</attr-name><attr-value>"styles.css"</attr-value> /&gt;</strong><em></em></b></span><strong class="close-tag">&lt;/head&gt;</strong></div><span><i class="down"></i><b class="expanded focused"><strong class="open-tag"><tag-name>&lt;body</tag-name>&gt;</strong><em>...</em><strong class="close-tag">&lt;/body&gt;</strong></b></span><div style="display: block;"><span><i class="down"></i><b class="expanded"><strong class="open-tag"><tag-name>&lt;nav</tag-name> <attr-name>class=</attr-name><attr-value>"navbar navbar-light navbar-expand-md"</attr-value>&gt;</strong><em>...</em><strong class="close-tag">&lt;/nav&gt;</strong></b></span><div style="display: block;"><span><i class="down"></i><b class="expanded"><strong class="open-tag"><tag-name>&lt;div</tag-name> <attr-name>class=</attr-name><attr-value>"container-fluid"</attr-value>&gt;</strong><em>...</em><strong class="close-tag">&lt;/div&gt;</strong></b></span><div style="display: block;"><span><b><strong class="open-tag"><tag-name>&lt;a</tag-name> <attr-name>class=</attr-name><attr-value>"navbar-brand"</attr-value> <attr-name>href=</attr-name><attr-value>"#"</attr-value>&gt;</strong><em>Roomies</em><strong class="close-tag">&lt;/a&gt;</strong></b></span><span><i></i><b><strong class="open-tag"><tag-name>&lt;button</tag-name> <attr-name>class=</attr-name><attr-value>"navbar-toggler"</attr-value> <attr-name>data-toggle=</attr-name><attr-value>"collapse"</attr-value> <attr-name>data-target=</attr-name><attr-value>"#navcol-1"</attr-value>&gt;</strong><em>...</em><strong class="close-tag">&lt;/button&gt;</strong></b></span><div><span><b><strong class="open-tag"><tag-name>&lt;span</tag-name> <attr-name>class=</attr-name><attr-value>"sr-only"</attr-value>&gt;</strong><em>Toggle navigation</em><strong class="close-tag">&lt;/span&gt;</strong></b></span><span><b><strong class="open-tag"><tag-name>&lt;span</tag-name> <attr-name>class=</attr-name><attr-value>"navbar-toggler-icon"</attr-value>&gt;</strong><em></em><strong class="close-tag">&lt;/span&gt;</strong></b></span><strong class="close-tag">&lt;/button&gt;</strong></div><span><i class="down"></i><b class="expanded"><strong class="open-tag"><tag-name>&lt;div</tag-name> <attr-name>id=</attr-name><attr-value>"navcol-1"</attr-value> <attr-name>class=</attr-name><attr-value>"collapse navbar-collapse"</attr-value>&gt;</strong><em>...</em><strong class="close-tag">&lt;/div&gt;</strong></b></span><div style="display: block;"><span><i class="down"></i><b class="expanded"><strong class="open-tag"><tag-name>&lt;ul</tag-name> <attr-name>class=</attr-name><attr-value>"nav navbar-nav"</attr-value>&gt;</strong><em>...</em><strong class="close-tag">&lt;/ul&gt;</strong></b></span><div style="display: block;"><span><i class="down"></i><b class="expanded"><strong class="open-tag"><tag-name>&lt;li</tag-name> <attr-name>class=</attr-name><attr-value>"nav-item"</attr-value> <attr-name>role=</attr-name><attr-value>"presentation"</attr-value>&gt;</strong><em>...</em><strong class="close-tag">&lt;/li&gt;</strong></b></span><div style="display: block;"><span><b><strong class="open-tag"><tag-name>&lt;a</tag-name> <attr-name>class=</attr-name><attr-value>"nav-link active"</attr-value> <attr-name>href=</attr-name><attr-value>"#"</attr-value>&gt;</strong><em>Créer une coloc</em><strong class="close-tag">&lt;/a&gt;</strong></b></span><strong class="close-tag">&lt;/li&gt;</strong></div><span><i class="down"></i><b class="expanded"><strong class="open-tag"><tag-name>&lt;li</tag-name> <attr-name>class=</attr-name><attr-value>"nav-item"</attr-value> <attr-name>role=</attr-name><attr-value>"presentation"</attr-value>&gt;</strong><em>...</em><strong class="close-tag">&lt;/li&gt;</strong></b></span><div style="display: block;"><span><b><strong class="open-tag"><tag-name>&lt;a</tag-name> <attr-name>class=</attr-name><attr-value>"nav-link"</attr-value> <attr-name>href=</attr-name><attr-value>"#"</attr-value>&gt;</strong><em>Test</em><strong class="close-tag">&lt;/a&gt;</strong></b></span><strong class="close-tag">&lt;/li&gt;</strong></div><span><i class="down"></i><b class="expanded"><strong class="open-tag"><tag-name>&lt;li</tag-name> <attr-name>class=</attr-name><attr-value>"nav-item"</attr-value> <attr-name>role=</attr-name><attr-value>"presentation"</attr-value>&gt;</strong><em>...</em><strong class="close-tag">&lt;/li&gt;</strong></b></span><div style="display: block;"><span><b><strong class="open-tag"><tag-name>&lt;a</tag-name> <attr-name>class=</attr-name><attr-value>"nav-link"</attr-value> <attr-name>href=</attr-name><attr-value>"#"</attr-value>&gt;</strong><em>Rechercher un coloc</em><strong class="close-tag">&lt;/a&gt;</strong></b></span><strong class="close-tag">&lt;/li&gt;</strong></div><strong class="close-tag">&lt;/ul&gt;</strong></div><strong class="close-tag">&lt;/div&gt;</strong></div><strong class="close-tag">&lt;/div&gt;</strong></div><strong class="close-tag">&lt;/nav&gt;</strong></div><strong class="close-tag focused">&lt;/body&gt;</strong></div><strong class="close-tag">&lt;/html&gt;</strong></div></div>
+				<div class="handle horizontal" data-type="n" data-max="500" data-target="#editor-panel .html-tree .attribute-panel" data-min="30" data-toggle-class="expanded" data-toggle-enable="42" data-toggle-disable="70"></div>
+				<div class="attribute-panel">
+					<div class="header">Attributes</div>
+					<div class="message-holder"></div>
+					<div class="fields"><div class="option-group attributes no-label" style=""><p class="option-group-label"><span class="title"></span><span class="collapse"></span><span class="reset" title="Reset the options in this group to their default state." style="display: none;">Reset All</span></p><div class="content"><div class="option textboxoption"><label class="option-content"><span title="">ID<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="id" value=""></div></label><div class="children"></div></div><div class="option"><label class="option-content"><span>Class Names</span><div class="tb-locked"> <input type="text"></div></label></div><div class="option-group locked-overrides-group no-label" style="display: none;"><p class="option-group-label"><span class="title"></span><span class="collapse"></span><span class="reset" title="Reset the options in this group to their default state." style="display: none;">Reset All</span></p><div class="content"></div></div><div class="option-group overrides-group no-label"><p class="option-group-label"><span class="title"></span><span class="collapse"></span><span class="reset" title="Reset the options in this group to their default state." style="display: none;">Reset All</span></p><div class="content"><div class="option doubletextboxoption"> <div class="option-content"><input type="text" class="key" title="" placeholder="Key"> <input type="text" class="value" title="" placeholder="Value"><span class="delete" style="display: none;">×</span></div></div></div></div></div></div></div>
+				</div>
+			</div></div>
+				</div>
+
+				<div class="handle vertical" data-type="e" data-target="#left-editor"></div>
+
+				<div id="right-editor" tabindex="0">
+					<div class="tabs editor-tabs">
+						<div class="tab-scroll">
+							<div class="tab-holder"><div class="tab active">
+			<span class="title">Styles</span>
+			<span class="close"></span>
+		</div></div>
+						</div>
+					</div>
+
+					<div class="editor-content"><div class="active-styles css-editor editor">
+				<div class="toolbar">
+					<div class="main">
+						<div class="split-button">
+							<a class="create button darkgray">Create</a><a class="create-choose button darkgray"><span class="caret down"></span></a>
+						</div>
+						<a class="button darkgray search icon" title="Search styles"><i class="material-icons">search</i></a>
+						<input type="search" class="search-input" placeholder="Search styles">
+						<span class="number-results" style="display: none;"></span>
+						<a class="button settings icon" style="display: none;">
+							<span></span>
+						</a>
+					</div>
+					<div class="multiple-selection" style="display:none">
+						<a class="button darkgray copy" title="Copy to">Copy to <span class="caret-down"></span></a>
+						<a class="button darkgray move" title="Move to">Move to <span class="caret-down"></span></a>
+						<a class="button darkgray duplicate" title="Duplicate">Duplicate</a>
+						<a class="button darkgray toggle" title="Disable">Disable</a>
+						<a class="button darkgray delete" title="Delete">Delete</a>
+					</div>
+				</div>
+				<div class="content" tabindex="0"><div class="css-group"><div class="css-block style"><div class="header"><div class="selector-container"><p class="opening-brace"><span class="selector"><b>element.style</b></span> {</p></div></div><ul class="rules"></ul><p class="closing-brace">}</p></div><div class="css-block system locked"><div class="header"><div class="selector-container"><p class="opening-brace"><span class="selector"><b>body</b></span> {</p></div><div class="menu"><span></span></div></div><div class="origin" title="Locked. Copy to edit."><i class="material-icons">lock_outline</i> Bootstrap</div><ul class="rules"><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">margin</span><i class="spacer">: </i><span class="css-value">0</span><span>;</span></li><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">font-family</span><i class="spacer">: </i><span class="css-value">-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"</span><span>;</span></li><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">font-size</span><i class="spacer">: </i><span class="css-value">1rem</span><span>;</span></li><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">font-weight</span><i class="spacer">: </i><span class="css-value">400</span><span>;</span></li><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">line-height</span><i class="spacer">: </i><span class="css-value">1.5</span><span>;</span></li><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">color</span><i class="spacer">: </i><span class="css-value"><span class="color" data-color="#212529" data-start="0" data-end="7"><i style="background-color: rgb(33, 37, 41);"></i></span>#212529</span><span>;</span></li><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">text-align</span><i class="spacer">: </i><span class="css-value">left</span><span>;</span></li><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">background-color</span><i class="spacer">: </i><span class="css-value"><span class="color" data-color="#fff" data-start="0" data-end="4"><i style="background-color: rgb(255, 255, 255);"></i></span>#fff</span><span>;</span></li></ul><p class="closing-brace">}</p></div></div><div class="css-group"><div class="inherit-label">Inherited from html</div><div class="css-block system locked"><div class="header"><div class="selector-container"><p class="opening-brace"><span class="selector"><b>html</b></span> {</p></div><div class="menu"><span></span></div></div><div class="origin" title="Locked. Copy to edit."><i class="material-icons">lock_outline</i> Bootstrap</div><ul class="rules"><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">font-family</span><i class="spacer">: </i><span class="css-value">sans-serif</span><span>;</span></li><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">line-height</span><i class="spacer">: </i><span class="css-value">1.15</span><span>;</span></li><li class="system"><input type="checkbox" tabindex="-1"><span class="css-property">-webkit-text-size-adjust</span><i class="spacer">: </i><span class="css-value">100%</span><span>;</span></li><li class="system error"><input type="checkbox" tabindex="-1"><span class="css-property">-webkit-tap-highlight-color</span><i class="spacer">: </i><span class="css-value">transparent</span><span>;</span></li></ul><p class="closing-brace">}</p></div></div></div>
+			</div></div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="right-panel" class="panel-container" style="width: 300px;"><div class="handle vertical resize-panel" data-type="w"></div><div class="panel-group" tabindex="0" style="height: 508.4px;"><div class="tabs"><div class="tab-squeeze"><div class="tab-holder"><div title="Look &amp; Feel" class="tab look-and-feel active"><div><i class="material-icons">color_lens</i><span>Look &amp; Feel</span></div></div><div title="Options" class="tab settings"><div><i class="material-icons">settings</i><span>Options</span></div></div><div title="Animation" class="tab animation"><div><i class="material-icons">stars</i><span>Animation</span></div></div></div></div></div>
+				<div class="content"><div class="panel options-panel"><div class="addon"><div class="breadcrumbs-option"><a>HTML</a><a class="active">Body</a><a>Navbar</a><a>Navbar Collapse</a><a>Nav</a><a>Nav Item</a><a>Link</a></div></div><div class="style-target" style=""><span class="select" tabindex="0">Style Attribute</span></div><div class="content"><div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+			<div class="list"><div><div class="option-group look-and-feel-layout" tabindex="0"><p class="option-group-label"><span class="title">Layout</span><span class="collapse"></span><span class="reset" title="Reset the options in this group to their default state." style="display: none;">Reset All</span></p><div class="content"><div class="info-option">
+			<div class="margin">
+				<div class="box-row blue">
+					<span class="margin-top" title="Margin Top">0</span>
+				</div>
+				<div class="box-row middle">
+					<div class="box-col blue">
+						<span class="margin-left" title="Margin Left">0</span>
+					</div>
+					<div class="box-col padding">
+						<div class="box-row green">
+							<span class="padding-top" title="Padding Top">0</span>
+						</div>
+						<div class="box-row middle">
+							<div class="box-col green">
+								<span class="padding-left" title="Padding Left">0</span>
+							</div>
+							<div class="box-col middle empty"></div>
+							<div class="box-col green">
+								<span class="padding-right" title="Padding Right">0</span>
+							</div>
+						</div>
+						<div class="box-row green">
+							<span class="padding-bottom" title="Padding Bottom">0</span>
+						</div>
+					</div>
+					<div class="box-col blue">
+						<span class="margin-right" title="Margin Right">0</span>
+					</div>
+				</div>
+				<div class="box-row blue">
+					<span class="margin-bottom" title="Margin Bottom">0</span>
+				</div>
+			</div>
+			<div class="dimensions">
+				<span class="size x"><i>X</i><b>0</b></span>
+				<span class="size y"><i>Y</i><b>0</b></span>
+				<span class="size width"><i>W</i><b>992</b></span>
+				<span class="size height"><i>H</i><b>650</b></span>
+			</div>
+		</div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Width<i class="caret" style="display: inline-block;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="width-option" value="" title="" placeholder="992px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Min Width<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="min-width-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Max Width<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="max-width-option" value="" title="" placeholder="none"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Height<i class="caret" style="display: inline-block;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="height-option" value="" title="" placeholder="650px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Min Height<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="min-height-option" value="" title="" placeholder="650px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Max Height<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="max-height-option" value="" title="" placeholder="none"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Margin<i class="caret" style="display: inline-block;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="margin-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Margin Top<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="margin-top-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Margin Right<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="margin-right-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Margin Bottom<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="margin-bottom-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Margin Left<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="margin-left-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Padding<i class="caret" style="display: inline-block;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="padding-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Padding Top<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="padding-top-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Padding Right<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="padding-right-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Padding Bottom<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="padding-bottom-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Padding Left<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="padding-left-option" value="" title="" placeholder="0px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div></div></div></div></div><div class="option-group look-and-feel-background" tabindex="0"><p class="option-group-label"><span class="title">Background</span><span class="collapse"></span><span class="reset" title="Reset the options in this group to their default state." style="display: none;">Reset All</span></p><div class="content"><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Bg Color<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="background-color-option" value="" title="" placeholder="rgb(255, 255, 255)"><span class="addon color-preview"><i style="background-color: rgb(255, 255, 255);"></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Bg Image<i class="caret" style="display: inline-block;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="background-image-option" value="" title="" placeholder="none"><span class="addon button-addon"><i class="material-icons">add_circle</i></span></div></label><div class="children"><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Position<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="background-position-option" value="" title="" placeholder="0% 0%"><span class="addon button-addon"><i class="material-icons" style="font-size: 18px;">arrow_drop_down</i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Size<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="background-size-option" value="" title="" placeholder="auto"><span class="addon button-addon"><i class="material-icons" style="font-size: 18px;">arrow_drop_down</i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Repeat<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="background-repeat-option" value="" title="" placeholder="repeat"><span class="addon button-addon"><i class="material-icons" style="font-size: 18px;">arrow_drop_down</i></span></div></label><div class="children"></div></div></div></div></div></div><div class="option-group look-and-feel-font" tabindex="0"><p class="option-group-label"><span class="title">Font</span><span class="collapse"></span><span class="reset" title="Reset the options in this group to their default state." style="display: none;">Reset All</span></p><div class="content"><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Color<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="color-option" value="" title="" placeholder="rgb(33, 37, 41)"><span class="addon color-preview"><i style="background-color: rgb(33, 37, 41);"></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Font Size<i class="caret" style="display: inline-block;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="font-size-option" value="" title="" placeholder="16px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Line Height<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="line-height-option" value="" title="" placeholder="24px"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Letter Spacing<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="letter-spacing-option" value="" title="" placeholder="normal"><span class="addon increment-handle"><i></i></span></div></label><div class="children"></div></div></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Font Family<i class="caret" style="display: inline-block;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="font-family-option" value="" title="" placeholder="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;"><span class="addon button-addon"><i class="material-icons" style="font-size: 18px;">arrow_drop_down</i></span></div></label><div class="children"><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Font Weight<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="font-weight-option" value="" title="" placeholder="400"><span class="addon button-addon"><i class="material-icons" style="font-size: 18px;">arrow_drop_down</i></span></div></label><div class="children"></div></div><div class="option textboxoption has-addon collapsed"><label class="option-content"><span title="">Font Style<i class="caret" style="display: none;"></i></span><div class="control"><span class="badge" style="display: none;"></span><input type="text" name="font-style-option" value="" title="" placeholder="normal"><span class="addon button-addon"><i class="material-icons" style="font-size: 18px;">arrow_drop_down</i></span></div></label><div class="children"></div></div></div></div></div></div><div class="option-group look-and-feel-filter" tabindex="0"><p class="option-group-label"><span class="title">Filters</span><span class="collapse"></span><span class="reset" title="Reset the options in this group to their default state." style="display: none;">Reset All</span></p><div class="content"><div class="option rangeoption"><label class="option-content"><span title="">Opacity</span><div class="control"><span class="warning-badge" style="display: none;"></span><input class="range-slider" type="range" min="0" max="1" step="0.01" style="background-size: 100% 100%;"><input type="text" value="" placeholder="1"></div></label></div><div class="composite-option"><div class="option rangeoption"><label class="option-content"><span title="">Blur</span><div class="control"><span class="warning-badge" style="display: none;"></span><input class="range-slider" type="range" min="0" max="100" step="1" style="background-size: 0% 100%;"><input type="text" value="" placeholder="0px"></div></label></div><div class="option rangeoption"><label class="option-content"><span title="">Brightness</span><div class="control"><span class="warning-badge" style="display: none;"></span><input class="range-slider" type="range" min="0" max="200" step="1" style="background-size: 50% 100%;"><input type="text" value="" placeholder="100%"></div></label></div><div class="option rangeoption"><label class="option-content"><span title="">Contrast</span><div class="control"><span class="warning-badge" style="display: none;"></span><input class="range-slider" type="range" min="0" max="200" step="1" style="background-size: 50% 100%;"><input type="text" value="" placeholder="100%"></div></label></div><div class="option rangeoption"><label class="option-content"><span title="">Grayscale</span><div class="control"><span class="warning-badge" style="display: none;"></span><input class="range-slider" type="range" min="0" max="100" step="1" style="background-size: 0% 100%;"><input type="text" value="" placeholder="0%"></div></label></div><div class="option rangeoption"><label class="option-content"><span title="">Hue</span><div class="control"><span class="warning-badge" style="display: none;"></span><input class="range-slider" type="range" min="0" max="360" step="1" style="background-size: 0% 100%;"><input type="text" value="" placeholder="0deg"></div></label></div><div class="option rangeoption"><label class="option-content"><span title="">Invert</span><div class="control"><span class="warning-badge" style="display: none;"></span><input class="range-slider" type="range" min="0" max="100" step="1" style="background-size: 0% 100%;"><input type="text" value="" placeholder="0%"></div></label></div><div class="option rangeoption"><label class="option-content"><span title="">Saturate</span><div class="control"><span class="warning-badge" style="display: none;"></span><input class="range-slider" type="range" min="0" max="200" step="1" style="background-size: 50% 100%;"><input type="text" value="" placeholder="100%"></div></label></div><div class="option rangeoption"><label class="option-content"><span title="">Sepia</span><div class="control"><span class="warning-badge" style="display: none;"></span><input class="range-slider" type="range" min="0" max="100" step="1" style="background-size: 0% 100%;"><input type="text" value="" placeholder="0%"></div></label></div></div></div></div></div></div></div></div></div>
+			<div class="handle resize-panel-group visible horizontal"></div></div><div class="panel-group" tabindex="0"><div class="tabs"><div class="tab-squeeze"><div class="tab-holder"><div title="Design" class="tab design active"><div><i class="material-icons">folder</i><span>Design</span></div></div></div></div></div>
+				<div class="content"><div class="panel tree-holder design-panel"><div class="content"><div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+			<div class="list"><span class="asset-group"><i></i><b class="name">Pages</b></span><div class="subtree pages-group"><div class="subtree"><span class="asset-item smart-editable active"><u class="icon"></u><b><div class="name-container"><a class="name" data-editable="1" title="index.html">index</a><em>.html</em></div></b></span></div></div><span class="asset-group"><i></i><b class="name">Styles</b></span><div class="subtree styles-group"><div class="subtree"><span class="asset-item smart-editable"><u class="icon"></u><b><div class="name-container"><a class="name" data-editable="1" title="styles.css">styles</a><em>.css</em></div></b></span></div></div><span class="asset-group"><i></i><b class="name">JavaScript</b></span><div class="subtree javascript-group"></div><span class="asset-group"><i></i><b class="name">Fonts</b></span><div class="subtree fonts-group"></div><span class="asset-group"><i></i><b class="name">Images</b></span><div class="subtree images-group"></div></div></div></div></div>
+			</div></div>
+	
+</div>
+
+
+<div id="dialogs">
+
+	<div id="icons-dialog" class="dialog" tabindex="0">
+
+		<h5>Choose an Icon</h5>
+
+		<select></select>
+
+		<input type="search" placeholder="Search for icons">
+
+		<div class="icon-holder"></div>
+
+		<div class="buttons">
+			<div class="button primary ok disable">OK</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="edit-screenshot-dialog" class="dialog" tabindex="0">
+
+		<h5>Edit Component Screenshot</h5>
+
+		<div class="crop-area"></div>
+
+		<div class="control-buttons">
+			<div class="button zoom-in">+</div>
+			<div class="button zoom-out">−</div>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary ok">Crop</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="images-dialog" class="dialog" tabindex="0">
+
+		<h5>Choose an Image</h5>
+
+		<input type="search" placeholder="Find image">
+
+		<div class="container">
+			<div class="loading">
+				<div class="spinner">
+					<div class="bounce1"></div>
+					<div class="bounce2"></div>
+					<div class="bounce3"></div>
+				</div>
+			</div>
+			<div class="image-holder"></div>
+			<div class="empty-message">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+					<path d="M20 12l-6 10-3.97-2.896-0.030-0.104-0.236-0.091 0.184 0.135-5.948 4.956v2h24v-2l-3-9-5-3zM9 13c1.656 0 3-1.343 3-3s-1.344-3-3-3-3 1.343-3 3 1.344 3 3 3zM31 2h-30c-0.552 0-1 0.448-1 1v26c0 0.553 0.448 1 1 1h30c0.553 0 1-0.447 1-1v-26c0-0.552-0.447-1-1-1zM30 27c0 0.553-0.447 1-1 1h-26c-0.552 0-1-0.447-1-1v-22c0-0.552 0.448-1 1-1h26c0.553 0 1 0.448 1 1v22z"></path>
+				</svg>
+				<div class="text"></div>
+			</div>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary ok disable">OK</div>
+			<div class="button cancel">Cancel</div>
+			<span class="selection-message" title="Hold Ctrl/Cmd/Shift and click to select multiple images.">
+				<span class="selection-message-text"></span><span class="tip">?</span>
+			</span>
+			<div class="button aside import">Import Image</div>
+		</div>
+	</div>
+
+	<div id="link-dialog" class="dialog" tabindex="0">
+
+		<h5>Link Properties</h5>
+
+		<div class="content">
+
+			<label class="split-field">
+				<span>HREF</span>
+				<div class="split-button">
+					<input type="text" placeholder="URL of the link">
+					<div class="button input-button choose-link-source">▼</div>
+				</div>
+			</label>
+
+		</div>
+
+		<!-- Todo: in the future show a list of recently used links -->
+
+		<div class="buttons">
+			<div class="button primary disabled ok">OK</div>
+			<div class="button cancel">Cancel</div>
+			<div class="button aside remove">Remove Link</div>
+		</div>
+	</div>
+
+	<div id="label-dialog" class="dialog" tabindex="0">
+
+		<h5>Change Component Label</h5>
+
+		<div class="content">
+
+			<input type="text" required="" maxlength="50">
+			<p>Labels are shown next to the component in the Overview panel.</p>
+
+		</div>
+
+		<div class="buttons">
+			<div class="button primary import">Set</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="create-recipient-dialog" class="dialog" tabindex="0">
+
+		<h5 class="dialog-title">Create New Recipient</h5>
+
+		<div class="content">
+
+			<div class="loading">
+				<div class="spinner">
+					<div class="bounce1"></div>
+					<div class="bounce2"></div>
+					<div class="bounce3"></div>
+				</div>
+			</div>
+
+			<div class="forms">
+
+				<div class="mode create">
+					<label class="field">
+						<input type="email" name="email" placeholder="Enter an email" required="" maxlength="100">
+					</label>
+					<p>Enter a valid email address where you wish to receive form submissions, and we'll send you a verification code.</p>
+				</div>
+
+				<div class="mode verify">
+					<label class="field">
+						<input type="text" name="code" placeholder="Verification code" required="" pattern="[0-9]{6}" title="Please enter a 6-digit verification code.">
+					</label>
+					<p>Didn't get a verfication email? <a href="https://bootstrapstudio.io/demo/#" class="send-verification">Send verification.</a></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary">Create</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+
+	</div>
+
+	<div id="recipient-manager-dialog" class="dialog" tabindex="0">
+		<h5>Manage Recipients</h5>
+
+		<div class="content">
+
+			<div class="loading">
+				<div class="spinner">
+					<div class="bounce1"></div>
+					<div class="bounce2"></div>
+					<div class="bounce3"></div>
+				</div>
+			</div>
+
+			<div class="has-recipients">
+				<div class="listing"></div>
+				<div class="note"></div>
+			</div>
+
+			<div class="message no-recipients">You don't have any recipients yet. Click the "Add Recipient"<br> button below to create your first one.</div>
+
+			<div class="message error">Recipient mangement is not available right now.</div>
+
+		</div>
+
+		<div class="buttons">
+			<div class="button primary cancel">Close</div>
+			<div class="button create aside add-recipient">Add Recipient</div>
+		</div>
+	</div>
+
+	<div id="css-link-dialog" class="link-import-dialog dialog" tabindex="0">
+
+		<h5>Link External CSS</h5>
+
+		<div class="content">
+			<label>
+				<span>URL</span>
+				<input type="url" name="url" placeholder="e.g. https://cdnjs.cloudflare.com/ajax/libs/animate.css" required="">
+			</label>
+
+			<div class="columns">
+				<label class="integrity">
+					<span>SRI hash (optional)</span>
+					<input type="text" name="integrity"><br>
+				</label>
+				<label class="cross-origin">
+					<span>Cross origin (optional)</span>
+					<select name="crossorigin">
+						<option value="" selected="selected"></option>
+						<option value="anonymous">anonymous</option>
+						<option value="use-credentials">use-credentials</option>
+					</select>
+				</label>
+			</div>
+
+			<p>Link a stylesheet from an external URL. It won't be stored in your design, only a &lt;link&gt; pointing to it will be added.</p>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary import disable">Link</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="js-link-dialog" class="link-import-dialog dialog" tabindex="0">
+
+		<h5>Link External JavaScript</h5>
+
+		<div class="content">
+
+			<label>
+				<span>URL</span>
+				<input type="url" name="url" placeholder="e.g. https://cdnjs.cloudflare.com/ajax/libs/backbone.js" required="">
+			</label>
+
+			<div class="columns">
+				<label class="integrity">
+					<span>SRI hash (optional)</span>
+					<input type="text" name="integrity"><br>
+				</label>
+				<label class="cross-origin">
+					<span>Cross origin (optional)</span>
+					<select name="crossorigin">
+						<option value="" selected="selected"></option>
+						<option value="anonymous">anonymous</option>
+						<option value="use-credentials">use-credentials</option>
+					</select>
+				</label>
+			</div>
+
+			<p>Link a js file from an external URL. It won't be stored in your design, only a &lt;script&gt; pointing to it will be added.</p>
+
+		</div>
+
+		<div class="buttons">
+			<div class="button primary import disable">Link</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="confirm-dialog" class="dialog" tabindex="0">
+
+		<h5></h5>
+
+		<div class="content">
+			<p class="message"></p>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary ok">OK</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="timer-dialog" class="dialog" tabindex="0">
+
+		<h5></h5>
+
+		<div class="content">
+			<p class="message"></p>
+			<b><span class="timer"></span></b>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary ok">OK</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="import-dialog" class="dialog" tabindex="0">
+
+		<h5></h5>
+
+		<div class="content">
+			<label class="checkbox replace">
+				 <span>Overwrite</span><b class="pretty-checkbox light"><input type="checkbox"><i></i></b>
+			</label>
+			<p class="message replace-message">
+				Should images with the same names be replaced?
+			</p>
+			<label class="checkbox optimize">
+				<span>Optimize images</span><b class="pretty-checkbox light"><input type="checkbox"><i></i></b>
+			</label>
+			<p class="message optimize-message">
+				Resize and compress large images for the web.
+			</p>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary ok">OK</div>
+			<div class="button cancel">Cancel</div>
+			<label class="checkbox remember">
+				<b class="pretty-checkbox light"><input type="checkbox"><i></i></b> <span>Remember</span>
+			</label>
+		</div>
+	</div>
+
+	<div id="choice-dialog" class="dialog" tabindex="0">
+
+		<h5></h5>
+
+		<div class="content">
+			<p class="message"></p>
+		</div>
+
+		<div class="buttons">
+			<label class="checkbox remember">
+			<b class="pretty-checkbox light"><input type="checkbox"><i></i></b> <span>Remember</span>
+			</label>
+		</div>
+	</div>
+
+	<div id="alert-dialog" class="dialog" tabindex="0">
+
+		<h5>Error</h5>
+
+		<div class="message"></div>
+
+		<div class="buttons">
+			<div class="button ok primary">OK</div>
+			<div class="button aside"></div>
+		</div>
+	</div>
+
+	<div id="about-dialog" class="dialog" tabindex="0">
+
+		<div class="logo-holder"></div>
+
+		<h5></h5>
+		<div class="edition"></div>
+
+		<div class="details"></div>
+
+		<div class="buttons">
+			<div class="button ok primary">Close</div>
+		</div>
+	</div>
+
+	<div id="whats-new-dialog" class="dialog" tabindex="0">
+
+		<div class="slides">
+			<div class="slide-scroll"></div>
+		</div>
+
+		<div class="arrow previous"><span class="glyphicon glyphicon-chevron-left"></span></div>
+		<div class="arrow next"><span class="glyphicon glyphicon-chevron-right"></span></div>
+
+		<div class="buttons">
+			<div class="button ok primary">Close</div>
+			<div class="button all-releases aside">See All Releases</div>
+		</div>
+	</div>
+
+	<div id="purchase-dialog" class="dialog" tabindex="0">
+
+		<img src="./bstudio.svg">
+
+		<h5><span class="days-remaining"></span> Days Left</h5>
+
+		<div class="message">
+			<p>We hope that you like Bootstrap Studio so far! This is just a friendly reminder that your free trial will end soon. Buy a license today and enjoy the app forever!</p>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary purchase">Buy License</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="settings-dialog" class="dialog" tabindex="0">
+
+		<div class="content"></div>
+
+		<div class="buttons">
+			<div class="button primary ok">Save</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="backup-list-dialog" class="dialog" tabindex="0">
+
+		<h5>Backups</h5>
+
+		<div class="content">
+
+			<label class="field backup-search">
+				<input type="search">
+				<i class="material-icons search-icon">search</i>
+			</label>
+
+			<div class="backup-list"></div>
+			<div class="message empty-message">
+				Backups are automatic snapshots of your designs.<br>You don't have any backups yet.
+			</div>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary close">Close</div>
+			<div class="button create aside show-settings">Backup Settings</div>
+		</div>
+
+	</div>
+
+	<div id="find-replace-dialog" class="dialog" tabindex="0">
+		<h5>Find and replace</h5>
+
+		<div class="content">
+			<div class="search-controls">
+				<div class="controls">
+					<input type="search" class="search-input" placeholder="Find elements by text or CSS selector">
+					<div class="result-count"></div>
+
+					<div class="split-button">
+						<a class="button button-filter regex" title="Use Regex">.*</a><a class="button button-filter match-case" title="Match case">Aa</a>
+					</div>
+				</div>
+				<div class="replace-controls">
+					<div class="controls">
+						<input type="text" class="replace-input" placeholder="Replace text">
+						<select class="target-pages">
+							<option value="current">Current Page</option>
+							<option value="all">All Pages</option>
+						</select>
+					</div>
+					<div class="additional-options">
+						<div class="search-targets">
+							<label class="pretty-checkbox-regular">
+								<input type="checkbox" data-target="text" checked="">
+								<span></span>
+								<span>Text</span>
+							</label>
+							<label class="pretty-checkbox-regular">
+								<input type="checkbox" data-target="attributes" checked="">
+								<span></span>
+								<span>Attributes</span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="result-options">
+				<div class="additional-options">
+					<div class="button select-all">
+						<label class="pretty-checkbox-regular">
+							<input type="checkbox">
+							<span></span>
+						</label>
+						<i class="caret down"></i>
+					</div>
+					<div class="additional-options-right">
+						<div class="split-button small">
+							<div class="button expand-all" title="Expand all matches">Expand All</div>
+							<div class="button collapse-all" title="Collapse all matches">Collapse All</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="search-results"></div>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary find">Find</div>
+			<div class="button replace">Replace</div>
+			<div class="button aside cancel">Close</div>
+		</div>
+	</div>
+
+	<div id="website-manager-dialog" class="dialog" tabindex="0">
+
+		<h5>Manage Websites</h5>
+
+		<div class="content">
+
+			<div class="loading">
+				<div class="spinner">
+					<div class="bounce1"></div>
+					<div class="bounce2"></div>
+					<div class="bounce3"></div>
+				</div>
+			</div>
+
+			<div class="has-websites">
+				<div class="listing"></div>
+				<div class="note"></div>
+			</div>
+
+			<div class="message no-websites">You don't have any websites yet. Click the "Add Website"<br> button below to create your first one.</div>
+
+			<div class="message no-websites-expired">You don't have any websites yet. Please renew your<br> license key to create your first one.</div>
+
+			<div class="message error">Website mangement is not available right now.</div>
+
+		</div>
+
+		<div class="buttons">
+			<div class="button primary cancel">Close</div>
+			<div class="button create aside add-website">Add Website</div>
+		</div>
+	</div>
+
+	<div id="create-website-dialog" class="dialog" tabindex="0">
+
+		<h5>Create Website</h5>
+
+		<div class="content">
+
+			<label class="field">
+				<span>Type</span>
+				<select class="domain-type">
+					<option value="bss.design">Free bss.design Subdomain</option>
+					<option value="custom">Custom Domain</option>
+				</select>
+			</label>
+
+			<label class="field subdomain-choice">
+
+				<span>Enter Subdomain</span>
+
+				<div class="wrapper">
+					<input type="text" class="subdomain" maxlength="60">
+					<div class="before">https://</div>
+					<div class="after">.bss.design</div>
+					<div class="error-bubble subdomain-error"></div>
+				</div>
+
+			</label>
+
+			<label class="split-field domain-choice enter-domain">
+				
+				<span>Enter Domain</span>
+
+				<div class="split-button">
+					<input type="text" placeholder="example.com" class="domain" maxlength="100">
+					<div class="button input-button check">Check</div>
+					<div class="error-bubble domain-error"></div>
+				</div>
+
+			</label>
+
+			<div class="domain-instructions">
+				<p>To create your new site, please complete these steps</p>
+
+				<ol>
+					<li>Transfer your domain name to the free <a class="link" href="https://www.cloudflare.com/">CloudFlare</a> service.</li>
+					<li>After the transfer is complete, create this DNS record (<a href="https://bootstrapstudio.io/tutorials/custom-domains" class="link">help</a>).
+						<div class="code">
+							<strong>Type:</strong> CNAME<br>
+							<strong>Name:</strong> <span class="original-domain">domain.com</span><br>
+							<strong>Domain Name:</strong> sites.bootstrapstudio.io
+						<div></div></div></li>
+					<li>Once you're ready, click the Verify Domain button below.</li>
+				</ol>
+
+				<div class="button verify">Verify Domain</div>
+			</div>
+
+			<label class="field subdomain-choice">
+				<span>Delete After</span>
+				<select class="delete-after">
+					<option value="1">1 Day</option>
+					<option value="7">1 Week</option>
+					<option value="31">1 Month</option>
+					<option value="0">Never</option>
+				</select>
+			</label>
+
+			<label class="field security">
+				<span>Security</span>
+
+				<label class="checkbox passkey-enable">
+					<b class="pretty-checkbox light"><input type="checkbox"><i></i></b> <span>Require Passkey <span class="tip" title="You can protect your website by requiring visitors to enter a passkey to view it. You can change this later.">?</span></span>
+				</label>
+
+				<input type="password" placeholder="Enter Passkey" class="passkey" maxlength="20">
+				<div class="toggle-pass-type" title="Toggle Passkey Visibility"><i class="material-icons">remove_red_eye</i></div>
+				<div class="error-bubble passkey-error">Should be longer than 3 chars. May contain only a-z, 0-9 - and _.</div>
+
+			</label>
+			
+			<p class="domain-choice domain-explanation">With Custom Domains you can point a domain name that you own to our free hosting service. <a href="https://bootstrapstudio.io/tutorials/custom-domains" class="link">Learn more.</a></p>
+
+		</div>
+
+		<div class="buttons">
+			<div class="button primary create">Create</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="edit-website-dialog" class="dialog" tabindex="0">
+
+		<h5>Edit Website</h5>
+
+		<div class="content">
+
+			<label class="field pseudo-field">
+				<span>Domain</span>
+				<div class="pseudo-input domain" title="Domains can&#39;t be changed. You can delete this site and create a new one."><span>domain.bss.design</span><i class="material-icons picker">lock_outline</i></div>
+			</label>
+
+			<label class="field security">
+				<span>Security</span>
+
+				<label class="checkbox passkey-enable">
+					<b class="pretty-checkbox light"><input type="checkbox"><i></i></b> <span>Require Passkey <span class="tip" title="You can protect your website by requiring visitors to enter a passkey to view it. You can change this later.">?</span></span>
+				</label>
+
+				<input type="password" placeholder="Enter Passkey" class="passkey" maxlength="20">
+				<div class="toggle-pass-type" title="Toggle Passkey Visibility"><i class="material-icons">remove_red_eye</i></div>
+				<div class="error-bubble passkey-error">Should be longer than 3 chars. May contain only a-z, 0-9 - and _.</div>
+
+			</label>
+			
+		</div>
+
+		<div class="buttons">
+			<div class="button primary save">Save</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="character-input-dialog" class="dialog" tabindex="0">
+
+		<h5>Character Input</h5>
+
+		<div class="characters">
+			<span>©</span>
+			<span>®</span>
+			<span>™</span>
+			<span>·</span>
+			<span>×</span>
+			<span>±</span>
+			<span>€</span>
+			<span>£</span>
+			<span>¥</span>
+			<span>¢</span>
+			<span>§</span>
+			<span>№</span>
+			<span>π</span>
+			<span>℃</span>
+			<span>℉</span>
+			<span>✓</span>
+			<span>✗</span>
+			<span>∞</span>
+			<span>«</span>
+			<span>»</span>
+			<span>↑</span>
+			<span>↓</span>
+			<span>←</span>
+			<span>→</span>
+			<span>↔</span>
+			<span>↺</span>
+			<span>↻</span>
+			<span>↯</span>
+			<span>⇄</span>
+			<span>▲</span>
+			<span>▼</span>
+			<span>◀</span>
+			<span>▶</span>
+			<span>♿</span>
+			<span>♻</span>
+			<span>♫</span>
+			<span>⚓</span>
+			<span>⚖</span>
+			<span>✈</span>
+			<span>❤</span>
+		</div>
+
+		<div class="text-input">
+			<textarea placeholder="Type here.."></textarea>
+			<div class="buttons">
+				<div class="button clear">Clear</div>
+			</div>
+		</div>
+
+		<div class="buttons">
+			<div class="button primary insert">Insert</div>
+			<div class="button cancel">Close</div>
+		</div>
+	</div>
+
+	<div id="new-design-dialog" class="dialog" tabindex="0" style="display: none;">
+
+		<h5>New Design</h5>
+
+		<div class="content">
+
+			<div class="content-left">
+
+				<label>
+					<span>Name</span>
+					<input type="text" class="design-name" placeholder="Name">
+				</label>
+
+				<div class="framework-selector">
+					<select class="framework"><option value="4">Bootstrap 4.4</option><option value="3">Bootstrap 3.4</option></select>
+				</div>
+			</div>
+
+			<div class="content-right">
+				<div class="templates thumbnails">
+					<span class="title">Template</span>
+					<ul><li class="active"><div class="card"><span class="img"><span class="overlay"></span></span><span class="checkmark"></span><p>Blank</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/clean-sky/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p title="Premium Template. Has multiple pages, drag/drop widgets and automatic navbar and footer linking.">Clean Sky<span class="badge"><i class="material-icons">star</i></span></p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/material-portfolio/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p title="Premium Template. Has multiple pages, drag/drop widgets and automatic navbar and footer linking.">Material Portfolio<span class="badge"><i class="material-icons">star</i></span></p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/sb-admin-2/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>SB Admin</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/agency/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>Agency</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/business-casual/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>Business Casual</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/clean-blog/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>Clean Blog</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/creative/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>Creative</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/freelancer/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>Freelancer</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/grayscale/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>Grayscale</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/landing-page/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>Landing Page</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/new-age/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>New Age</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/one-page-wonder/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>One Page Wonder</p></div></li><li><div class="card"><span class="img"><span class="overlay"></span><div class="background" draggable="false" style="background-image: url(&quot;./assets/templates/bstudio/4/stylish-portfolio/images/preview.jpg&quot;);"></div></span><span class="checkmark"></span><p>Stylish Portfolio</p></div></li></ul>
+				</div>
+
+				<div id="customize-design" class="additional-options">
+
+					<div class="pages thumbnails">
+
+						<div class="placeholders"></div>
+
+						<label>
+							<span class="title">Pages
+								<span class="count"></span>
+								<span class="tip" title="Choose which template pages to include in your new site. You can always add these later, from the &#39;New Template Page&#39; menu.">?</span>
+							</span>
+						</label>
+						<ul>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="buttons">
+			<div class="button primary ok">Create</div>
+			<div class="button cancel">Cancel</div>
+			<div class="button aside customize" style="display: none;">Customize</div>
+			<div class="button aside back" style="display: none;">Back</div>
+		</div>
+	</div>
+
+	<div id="new-template-page-dialog" class="dialog" tabindex="0">
+		<h5>New Template Page</h5>
+
+		<div class="content">
+
+			<div class="pages thumbnails">
+				<ul>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="buttons">
+			<div class="button primary ok">Create</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="component-dialog" class="dialog" tabindex="0">
+
+		<div class="content">
+
+			<div class="header">
+				<div class="btn">Install</div>
+				<div class="vote">
+					<div class="arrows">
+						<div class="arrow up"></div>
+						<div class="arrow down"></div>
+					</div>
+					<div class="count"></div>
+				</div>
+				<div class="component-name"></div>
+				<div class="author">
+					<div class="name"></div>
+					<div class="downloads"></div>
+				</div>
+			</div>
+
+			<div class="scroll-container">
+				<div class="preview"></div>
+
+				<div class="description"></div>
+
+				<div class="stats">
+					<span class="publish-date"></span><span class="framework-version"></span><span class="installation-count">
+				</span></div>
+
+				<div class="comments">
+
+					<div class="comment-list"></div>
+
+					<div class="comment-form">
+						<div class="photo"></div>
+						<div class="text-holder">
+							<textarea placeholder="Write your comment here"></textarea>
+							<div class="button primary submit disable">Submit</div>
+							<div class="error-message"></div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="loading">
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+
+		<div class="error">
+			<div class="message">Sorry, can't display this component right now.</div>
+		</div>
+
+		<div class="buttons">
+			<div class="button cancel">Close</div>
+		</div>
+	</div>
+
+	<div id="profile-dialog" class="dialog" tabindex="0">
+
+		<div class="content">
+
+			<div class="header">
+				<div class="author">
+					<div class="photo"></div>
+					<div class="mid">
+						<div class="name"></div>
+						<div class="secondary"></div>
+					</div>
+				</div>
+				<div class="downloads"></div>
+			</div>
+
+			<div class="scroll-container">
+				<div class="components-list"></div>
+				<div class="no-components-message"></div>
+			</div>
+
+		</div>
+
+		<div class="loading">
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+
+		<div class="error">
+			<div class="message">Sorry, can't display this profile right now.</div>
+		</div>
+
+		<div class="buttons">
+			<div class="button cancel">Close</div>
+		</div>
+	</div>
+
+	<div id="component-to-package-dialog" class="dialog" tabindex="0">
+
+		<h5>Create New Component</h5>
+		
+		<input type="text" placeholder="Component Name" id="package-name-input">
+
+		<div class="content">
+
+			<div class="menu-item expanded css-group">
+				<div class="menu-item-heading">
+					<span class="menu-item-toggle">
+						<i class="caret down"></i>CSS
+					</span>
+					<span class="button add-css">Add CSS</span>
+				</div>
+				<div class="menu-item-content">
+					<div class="css-list"></div>
+				</div>
+			</div>
+
+			<div class="menu-item expanded image-group">
+				<div class="menu-item-heading">
+					<span class="menu-item-toggle">
+						<i class="caret down"></i>Images
+					</span>
+					<span class="button add-image">Add Images</span>
+				</div>
+				<div class="menu-item-content">
+					<div class="image-list list"></div>
+				</div>
+			</div>
+
+			<div class="menu-item expanded js-group">
+				<div class="menu-item-heading">
+					<span class="menu-item-toggle">
+						<i class="caret down"></i>JavaScript
+					</span>
+				</div>
+				<div class="menu-item-content">
+					<div class="js-list list"></div>
+				</div>
+			</div>
+
+			<div class="menu-item expanded stylesheet-group">
+				<div class="menu-item-heading">
+					<span class="menu-item-toggle">
+						<i class="caret down"></i>Linked CSS
+					</span>
+				</div>
+				<div class="menu-item-content">
+					<div class="stylesheet-list list"></div>
+				</div>
+			</div>
+
+			<div class="menu-item expanded font-group">
+				<div class="menu-item-heading">
+					<span class="menu-item-toggle">
+						<i class="caret down"></i>Fonts
+					</span>
+				</div>
+				<div class="menu-item-content">
+					<div class="font-list list"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="buttons">
+			<div class="button ok primary disable">Create</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="font-manager-dialog" class="dialog" tabindex="0">
+
+		<h5>Fonts</h5>
+
+		<div class="content">
+			<input type="search" placeholder="Find font">
+
+			<select class="sorting">
+				<option value="name">Sort by Name</option>
+				<option value="popularity">Sort by Popularity</option>
+			</select>
+
+			<div class="secondary">
+				<div class="number"></div>
+				<div class="filter">
+					<span class="category-filter">All Styles</span>
+					<span class="set-filter">All Sets</span>
+				</div>
+			</div>
+
+			<div class="google-font-list"></div>
+
+		</div>
+
+		<div class="buttons">
+			<div class="button ok primary disable">Save</div>
+			<div class="button cancel">Cancel</div>
+			<div class="button aside import">Import Webfont</div>
+		</div>
+	</div>
+
+	<div id="resource-order-dialog" class="dialog" tabindex="0">
+
+		<h5>Page Include Order</h5>
+		<p>Rearrange these files in the order you wish them to get included in the page.</p>
+
+		<div class="content">
+			<div class="fixed-container"></div>
+			<div class="reorder-container"></div>
+		</div>
+
+		<div class="buttons">
+			<div class="button save primary">Save</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="copy-multiple-dialog" class="dialog" tabindex="0">
+
+		<h5>Copy Component To</h5>
+			
+		<label class="pretty-checkbox-regular select-all"><input type="checkbox"><span></span><span>Select all</span></label>
+
+		<div class="content">
+			<div class="page-list"></div>
+		</div>
+
+		<div class="buttons">
+			<div class="button ok primary">Copy</div>
+			<div class="button cancel">Cancel</div>
+
+			<label class="checkbox linked">
+				<b class="pretty-checkbox light"><input type="checkbox" class="linked"><i></i></b> <span>Link copies</span>
+			</label>
+		</div>
+	</div>
+
+	<div id="share-component-dialog" class="dialog" tabindex="0">
+
+		<h5>Share Component</h5>
+
+		<div class="content">
+
+			<div class="component-holder">
+
+				<div class="left-col">
+
+					<label>
+						<span>Preview</span>
+						<div class="component-preview"></div>
+					</label>
+
+				</div>
+
+				<div class="right-col">
+
+					<label>
+						<span>Name</span>
+						<input type="text" placeholder="" class="component-name">
+					</label>
+
+					<label>
+						<span>Description (optional)</span>
+						<textarea class="component-description"></textarea>
+					</label>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="buttons">
+
+			<div class="author-card">
+				<span class="author-label">Sharing As</span>
+				<span class="author-image"></span>
+				<span class="author-name">Some Name</span>
+			</div>
+
+			<div class="error"></div>
+
+			<div class="button ok primary disable">Share</div>
+			<div class="button unshare aside">Unshare</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+
+		<div class="loading">
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="edit-profile-dialog" class="dialog" tabindex="0">
+
+		<h5>Edit Your Profile</h5>
+
+		<div class="content">
+
+			<div class="left-col">
+				<div class="photo"></div>
+			</div>
+
+			<div class="right-col">
+
+				<label>
+					<span>Name</span>
+					<input type="text" placeholder="" class="name">
+				</label>
+
+				<label>
+					<span>Email (Private)</span>
+					<input type="email" placeholder="" class="gravatar-email">
+					<i>Your photo is fetched from gravatar using this email.</i>
+				</label>
+
+			</div>
+		</div>
+
+		<div class="buttons">
+			<div class="error"></div>
+			<div class="button ok primary disable">Update</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+
+		<div class="loading">
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="page-properties-dialog" class="properties-dialog dialog" tabindex="0">
+
+		<div class="content"></div>
+
+		<div class="buttons">
+			<div class="button ok primary">Save</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="css-chooser-dialog" class="dialog" tabindex="0">
+		<h5>Select CSS</h5>
+
+		<div class="content"></div>
+
+		<div class="buttons">
+			<div class="button primary ok">OK</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div id="sign-in-dialog" class="dialog">
+
+		<h5>Sign In</h5>
+
+		<div class="content">
+			<p class="message">Sign in with Open Rate to unlock Mail Studio's full power. <br>TODO: make this pretty and link to a landing page for more info.</p>
+		</div>
+
+		<div class="buttons">
+			<div class="button sign-in primary">Sign In</div>
+			<div class="button cancel">Cancel</div>
+		</div>
+	</div>
+
+	<div class="dialog-background" style="display: none;"></div>
+</div>
+
+
+<!-- misc -->
+
+<div id="image-asset-tooltip">
+	<div class="preview"></div>
+	<p class="dimensions"></p>
+</div>
+
+<div id="color-picker" tabindex="0">
+
+	<div class="tabs">
+		<div class="tab select active" data-tab="select">Select</div>
+		<div class="tab design" data-tab="design">Design</div>
+		<div class="tab favorites" data-tab="favorites">Favorites</div>
+		<div class="tab library" data-tab="library">Library</div>
+	</div>
+
+	<div class="content">
+
+		<div class="tab-target select active">
+
+			<div class="gradient">
+				<div class="selection"></div>
+				<div class="bg1"></div>
+				<div class="bg2"></div>
+			</div>
+			<div class="preview">
+				<i class="material-icons picker">colorize</i>
+				<span class="old-color"></span>
+				<span class="new-color"></span>
+			</div>
+			<div class="sliders">
+				<input type="range" class="hue" min="1" max="100">
+				<input type="range" class="alpha" value="100">
+			</div>
+		</div>
+
+		<div class="tab-target swatch"></div>
+
+		<div class="color-value">
+			<select class="dark format">
+				<option value="hex">HEX</option>
+				<option value="rgb">RGB</option>
+			</select>
+			<input type="text" class="dark value">
+			<i class="material-icons favorite">favorite</i>
+		</div>
+		<div class="buttons">
+			<a class="button darkblue select-button">Select</a>
+			<a class="button darkgray cancel-button">Cancel</a>
+		</div>
+
+	</div>
+
+</div>
+
+<div id="color-picker-overlay"></div>
+
+<div class="cloak"></div>
+
+<div id="freeze-ui"></div>
+
+<div id="dragbox" style="display: none; transform: translate3d(567px, 195px, 0px);">
+	<div id="ghost" style="transform: translate3d(10px, 10px, 0px); width: auto; height: auto; opacity: 1;">
+		<div id="ghost-text" style="display: block;">Navbar</div>
+	</div>
+</div>
+
+<div id="style-drag"></div>
+
+<div id="notification-center"></div>
+
+<div id="context-menu" style="display: none;"></div>
+
+<script src="./electron.js"></script>
+<script src="./static.js"></script>
+<script src="./error.js"></script>
+
+
+
+<script src="./chart.min.js"></script><div class="tooltip" style="display: none;"></div><div class="tooltip" style="display: none;"></div><div class="tooltip" style="display: none;"></div><div class="tooltip" style="display: none;"></div></body></html>

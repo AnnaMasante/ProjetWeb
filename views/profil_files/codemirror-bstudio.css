@@ -1,0 +1,200 @@
+.cm-s-bstudio {
+  background-color: transparent;
+  color: rgba(233, 237, 237, 1);
+  font-family: 'BSS Monospace', monospace;
+  font-size: 13px;
+  line-height:1.45;
+}
+.cm-s-bstudio .CodeMirror-gutters {
+  background: transparent;
+  color: red;
+  border: none;
+}
+.cm-s-bstudio.CodeMirror pre > * { text-indent: 0px; }
+.cm-s-bstudio .CodeMirror-guttermarker, .cm-s-bstudio .CodeMirror-guttermarker-subtle, .cm-s-bstudio .CodeMirror-linenumber { color: #515B5F; }
+.cm-s-bstudio .CodeMirror-cursor { border-left: 1px solid #f8f8f0; }
+.cm-s-bstudio div.CodeMirror-selected { background: rgba(255, 255, 255, 0.15); }
+.cm-s-bstudio.CodeMirror-focused div.CodeMirror-selected { background: rgba(255, 255, 255, 0.10); }
+.cm-s-bstudio ::selection, .cm-s-bstudio .CodeMirror-line::selection, .cm-s-bstudio .CodeMirror-line > span::selection, .cm-s-bstudio .CodeMirror-line > span > span::selection { background: rgba(255, 255, 255, 0.16); }
+.cm-s-bstudio ::-moz-selection, .cm-s-bstudio .CodeMirror-line::-moz-selection, .cm-s-bstudio .CodeMirror-line > span::-moz-selection, .cm-s-bstudio .CodeMirror-line > span > span::-moz-selection { background: rgba(255, 255, 255, 0.16); }
+
+.cm-s-bstudio .CodeMirror-scrollbar-filler { background-color: #1D2022;}
+
+.cm-s-bstudio .CodeMirror-activeline-background { background: rgba(0, 0, 0, 0); }
+.cm-s-bstudio .cm-keyword { color: #4BCEFF; }
+.cm-s-bstudio .cm-operator { color: rgb(159, 216, 255); }
+.cm-s-bstudio .cm-variable-2 { color: #fff; }
+.cm-s-bstudio .cm-variable-3 { color: #fff; }
+.cm-s-bstudio .cm-builtin { color: #DECB6B; }
+.cm-s-bstudio .cm-atom { color: #F77669; }
+.cm-s-bstudio .cm-number { color: #FF1FA4; }
+.cm-s-bstudio .cm-def { color: rgba(233, 237, 237, 1); }
+.cm-s-bstudio .cm-string { color: #FBA929; }
+.cm-s-bstudio .cm-string-2 { color: #FBA929; }
+.cm-s-bstudio .cm-comment { color: #546E7A; }
+.cm-s-bstudio .cm-variable { color: #fff; }
+.cm-s-bstudio .cm-tag { color: #4BCEFF; }
+.cm-s-bstudio .cm-meta { color: #80CBC4; }
+.cm-s-bstudio .cm-attribute { color: #FBA929; }
+.cm-s-bstudio .cm-property { color: #fff; }
+.cm-s-bstudio .cm-qualifier { color: #DECB6B; }
+.cm-s-bstudio .cm-variable-3 { color: #fff; }
+
+/* HTML customizations */
+
+.cm-s-bstudio .cm-m-xml.cm-string {
+    color: #FF4500;
+}
+
+.cm-s-bstudio .cm-m-xml.cm-attribute {
+    color: #F5E458;
+}
+
+.cm-s-bstudio .cm-m-xml.cm-tag {
+    color: #1BBDF9;
+}
+
+/*.cm-s-bstudio .cm-tag { color: rgba(255, 83, 112, 1); }*/
+.cm-s-bstudio .cm-error {
+  color: #fff !important;
+  background-color: #EC5F67;
+}
+.cm-s-bstudio .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+.cm-s-bstudio .CodeMirror-linenumber {
+    padding: 0 10px 0 5px;
+}
+
+.cm-s-bstudio.CodeMirror {
+  height: 100%;
+}
+
+.cm-s-bstudio .CodeMirror-activeline .CodeMirror-linenumber{
+  background-color: #2E3235;
+}
+
+.cm-s-bstudio .cm-searching {
+  background: rgba(251, 244, 21, 0.25) !important;
+}
+
+/* SASS Customizations */
+
+.cm-s-bstudio .cm-m-css.cm-variable{
+  color: #FBA929;
+}
+
+.cm-s-bstudio .cm-m-css.cm-variable-2{
+  color: #3fd454;
+}
+
+.cm-s-bstudio .cm-m-css.cm-def,
+.cm-s-bstudio .cm-m-css.cm-property{
+  color: #4BCEFF;
+}
+
+.cm-s-bstudio .cm-m-css.cm-atom,
+.cm-s-bstudio .cm-m-css.cm-variable-3{
+  color: #FF1FA4;
+}
+
+/* Code Folding */
+
+.cm-s-bstudio .CodeMirror-foldmarker {
+  color: #0060A7;
+  font-family: sans-serif;
+  line-height: .2;
+  cursor: default;
+  background-color: white;
+  padding: 0 2px;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px #ACD5F3 inset;
+  margin-left:3px;
+  margin-right:3px;
+}
+
+.cm-s-bstudio .CodeMirror-foldgutter {
+  width: .7em;
+}
+
+.cm-s-bstudio .CodeMirror-foldgutter-open,
+.cm-s-bstudio .CodeMirror-foldgutter-folded {
+    color: #777;
+}
+
+.cm-s-bstudio .CodeMirror-foldgutter-open:after {
+  content: "\25BE";
+  font-size: 20px;
+  line-height: 16px;
+  margin-left:-4px;
+}
+
+.cm-s-bstudio .CodeMirror-foldgutter-folded:after {
+  content: "\25B8";
+  font-size: 20px;
+  line-height: 16px;
+  margin-left:-4px;
+}
+
+/* Dialog css */
+
+.CodeMirror-dialog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #24282B;
+  padding: 10px 14px;
+  overflow: hidden;
+  font: 13px/1.5 Arial, Helvetica, sans-serif;
+  border-top: 8px solid #2C3134;
+  z-index: 15;
+}
+
+.CodeMirror-dialog input {
+  border: none;
+  outline: none;
+  background: #4C5256;
+  width: 30% !important;
+  color: #fff;
+  padding: 3px 5px;
+  font: inherit;
+  line-height: 1;
+  margin: 0 10px;
+}
+
+/* Search buttons. Copied from button dark gray. 
+  Todo: make it use the proper buttons in the future; */
+
+.CodeMirror-dialog button {
+    display: inline-block;
+    border: none;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    outline: none;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(#82898c, #5a6064);
+    opacity: 0.9;
+    font-size: 10px;
+    padding: 6px 10px;
+    margin-right: 1px;
+    border-radius: 2px;
+}
+
+.CodeMirror-dialog button:first-child {
+    margin-left: 10px;
+}
+
+.CodeMirror-dialog button:hover{
+  opacity: 1;
+}
+
+.CodeMirror-dialog button:active{
+  bottom:-1px;
+  opacity:0.8 !important;
+}
