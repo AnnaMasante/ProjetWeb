@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Login Form </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style/style.css" type="text/html">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Roomies</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Créer une coloc <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Rechercher un coloc</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="#">Tests de personnalité :D</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+    <form class="form form-vertical" action="/site/avatar-upload/1" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                <div class="kv-avatar">
+                    <div class="file-loading">
+                        <input id="avatar-1" name="avatar-1" type="file" required>
+                    </div>
+                </div>
+                <div class="kv-avatar-hint">
+                    <small>Select file < 1500 KB</small>
+                </div>
+            </div>
+            <div class="form-group">
+                  <hr>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+            </div>
+        </div>
+    </form>
+    <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
+
+    <!-- the fileinput plugin initialization -->
+    <script>
+        var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
+            'onclick="alert(\'Call your custom code here.\')">' +
+            '<i class="glyphicon glyphicon-tag"></i>' +
+            '</button>';
+        $("#avatar-1").fileinput({
+            overwriteInitial: true,
+            maxFileSize: 1500,
+            showClose: false,
+            showCaption: false,
+            browseLabel: '',
+            removeLabel: '',
+            browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+            removeTitle: 'Cancel or reset changes',
+            elErrorContainer: '#kv-avatar-errors-1',
+            msgErrorClass: 'alert alert-block alert-danger',
+            defaultPreviewContent: '<img src="/samples/default-avatar-male.png" alt="Your Avatar">',
+            layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+            allowedFileExtensions: ["jpg", "png", "gif"]
+        });
+    </script>
+
+</body>
+</html>
