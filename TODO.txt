@@ -16,3 +16,5 @@ faire une navbar
 
 page des tests
 	- 2 tests différents
+
+Se renseigner passport-jwt
