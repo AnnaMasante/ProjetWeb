@@ -20,6 +20,8 @@ jwtOptions.secretOrKey = 'wowwow';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.set('view engine','ejs');
+
 //Strategy web token
 let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
     console.log('payload received ', jwt_payload);
@@ -111,7 +113,7 @@ const getUser = async obj => {
 };
 //register route => INSCRIPTION
 app.get('/register', function (req, res) {
-    console.log("GET register")
+    //console.log("GET register")
     res.sendFile(path.join(__dirname + '/views/register.html'));
 });
 
@@ -129,33 +131,40 @@ app.post('/register', function (req, res, next) {
     } else {
         res.json({Personne, msg: "Mots de passe invalides"});
     }
-    //console.log({prenom, nom, numTel, enRecherche, mail, mdp, mdp1, sexe});
     });
 
 app.post('/login', async function (req, res, next) {
     const mail = req.body.mail;
     const mdp = req.body.mdp;
-    //console.log(mdp.mdp);
     if (mail && mdp) {
         let user = await getUser({mail});
         if (!user) {
             res.status(401).json({msg: "Utilisateur non trouvé", user});
         }
-       // console.log(user.mdp);
-        //console.log(mdp);
         if (mdp!=null && user.mdp === mdp ) {
             let payload = {idPers: user.idPers};
-           // console.log(payload);
+            
             let token = jwt.sign(payload, jwtOptions.secretOrKey);
-            res.sendFile(path.join(__dirname + '/views/success.html'));
+            console.log(token);
+            res.cookie('secureToken',token,{httpOnly:true} );
+            /*app.get('login/profil',function(req,res){
+                return res.sendFile(path.join(__dirname + '/views/profil.html'));
+            })*/
+            res.redirect('/profil')
+            
         } else {
-            res.status(401).json({msg: "Mot de passe incorrecte"});
+            res.status(401).json({msg: "Mot de passe incorrect"});
         }
     }
 });
+
+app.get('/profil',function(req,res){
+    res.render('profil');
+})
 app.get('/login', function (req, res) {
-    console.log("GET login")
-    res.sendFile(path.join(__dirname + '/views/login.html'));
+    //console.log("GET login")
+    //res.sendFile(path.join(__dirname + '/views/login.html'));
+    res.render('login');
 });
 
 

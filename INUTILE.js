@@ -24,7 +24,7 @@ app.get('/Signup',function (request,response) {
 })
 
 app.post('/auth', function(request, response) {
-    var mail = request.body.mail;https://sucuri.net/guides/owasp-top-10-security-vulnerabilities-2020/
+    var mail = request.body.mail;
     var mdp = request.body.mdp;
     if (mail && mdp) {
         connection.query('SELECT * FROM Personne WHERE mail = ? AND mdp = ?', [mail, mdp], function(error, results, fields) {
