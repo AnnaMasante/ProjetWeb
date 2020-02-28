@@ -22,7 +22,7 @@ app.get('/', function (request, response) {
 
 //register route => INSCRIPTION
 app.get('/register', function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/register.html'));
+    res.render('register')
 });
 
 app.post('/register', function (req, res, next) {

@@ -1,10 +1,22 @@
 const path = require('path')
 const check = require('../controllers/verifRegister')
 const Sequelize = require('sequelize')
+const jwt = require('jsonwebtoken');
+const jwtutils = require('../utils/jwt.utils');
+const express = require('express');
+const app = express();
+
+const passport = require('passport');
+const passportJWT = require('passport-jwt');
+let ExtractJwt = passportJWT.ExtractJwt;
+let JwtStrategy = passportJWT.Strategy;
 const sequelize = new Sequelize({
   dialect:'sqlite',
   storage:'bdd.sqlite'
 })
+
+let jwtOptions = {};
+
 //Create user model
 const Personne = sequelize.define(
   'Personne', {
@@ -65,6 +77,25 @@ const getUser = async obj => {
 
 module.exports = {
   login: async function(req,res){
+    jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+    jwtOptions.secretOrKey = 'wowwow';
+
+    //Strategy web token
+    let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
+        console.log('payload received ', jwt_payload);
+        let user = getUser({id: jwt_payload.id});
+        if (user) {
+            next(null, user);
+        } else {
+            next(null, false);
+        }
+    });
+
+    //use the strategy
+    passport.use(strategy);
+    app.use(passport.initialize());
+
+
     const mail = req.body.mail;
       const mdp = req.body.mdp;
       if (mail && mdp) {
