@@ -6,6 +6,7 @@ const jwtutils = require('../utils/jwt.utils');
 const express = require('express');
 const app = express();
 
+const jwt_decode = require('jwt-decode')
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
 let ExtractJwt = passportJWT.ExtractJwt;
@@ -18,7 +19,7 @@ const sequelize = new Sequelize({
 let jwtOptions = {};
 
 //Create user model
-const Personne = sequelize.define(
+/*const Personne = sequelize.define(
   'Personne', {
       idPers: {
           type: Sequelize.INTEGER,
@@ -73,6 +74,7 @@ const getUser = async obj => {
       where: obj,
   });
 };
+*/
 
 
 module.exports = {
@@ -83,6 +85,7 @@ module.exports = {
     //Strategy web token
     let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
         console.log('payload received ', jwt_payload);
+        //console.log(jwt_payload.id);
         let user = getUser({id: jwt_payload.id});
         if (user) {
             next(null, user);
@@ -104,17 +107,15 @@ module.exports = {
               res.status(401).json({msg: "Utilisateur non trouvé", user});
           }
           if (mdp!=null && user.mdp === mdp ) {
-              let payload = {idPers: user.idPers};
               
-              let token = jwt.sign(payload, jwtOptions.secretOrKey);
-              console.log(token);
-              res.cookie('secureToken',token,{httpOnly:true} );
-              /*app.get('login/profil',function(req,res){
-                  return res.sendFile(path.join(__dirname + '/views/profil.html'));
-              })*/
-              var link = res.redirect('/profil')
-              return link
-              
+            let payload = {idPers: user.idPers};              
+            let token = jwt.sign(payload, jwtOptions.secretOrKey);
+            console.log(token);
+            
+           
+            var link = res.redirect('/profil')
+            return link
+          
           } else {
               var link = res.status(401).json({msg: "Mot de passe incorrect"});
               return link;

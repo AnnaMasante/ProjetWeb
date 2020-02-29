@@ -9,6 +9,7 @@ faire les profils :
 	- photo de profil
 	- affiche nom et prénom
 	- résultats des tests
+	- Bouton déconnexion 
 
 faire une navbar 
 	- accès aux tests

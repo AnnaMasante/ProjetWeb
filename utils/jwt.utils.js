@@ -28,7 +28,21 @@ module.exports =
     passport.use(strategy);
     app.use(passport.initialize());
 
-}
+    },
+
+    getUserId: function(token){
+        var userId= -1;
+        if (token != null){
+            try{
+                var jwtToken = jwt.verify(token)
+                if(jwtToken!=null){
+                    idPers = jwtToken.idPers;
+                }
+            }catch(err){}
+        }
+        return idPers;
+
+    }
 
 
 }

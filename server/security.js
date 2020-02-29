@@ -2,8 +2,24 @@ let MonCookie = require('../models/cookie');
 let jwt = require('../models/cookie');
 
 
-export function decodeToken(req,res){
-    if (req.cookies['secureToken'] !==undefined){
-        var decodeToken = jwt.verify(MonCookie.getToken(req),MonCookie.key())
+class Token {
+    static decodeToken(req, token){
+        var decoded = jwt_decode(token);
+        return decoded;
     }
+
+    static setToken(res, token){
+        return res.cookie('secureToken',token,{httpOnly:true} );
+    }
+
+    static getToken(res,token){
+        return req.cookies['secureToken'];
+    }
+        
+    static destroyToken(req,res){
+        res.clearCookie('secureToken');
+    }
+    
 }
+module.exports = Token;
+
