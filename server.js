@@ -5,6 +5,8 @@ const app = express();
 const check = require('./controllers/verifRegister');
 let passport = require('./utils/jwt.utils');
 let models = require('./models/connexion');
+const verifToken = require("./controllers/verifToken")
+const controllers = require("./controllers/usrCtrl")
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -35,13 +37,17 @@ app.post('/login', async function(req,res,next){
 });
 
 
-app.get('/profil',function(req,res){
-    res.render('profil');
+app.get('/profil', verifToken, controllers.getProfil, function(req,res){
+    res.render('profil',{req: req.Personne.isAdmin});
 })
+
 app.get('/login', function (req, res) {
     res.render('login');
 });
 
+app.get('/profil/hubert', function(req,res){
+    res.render('hubert');
+})
 
 //On démarre le serveur
 app.listen(3000, function () {

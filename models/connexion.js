@@ -5,7 +5,9 @@ const jwt = require('jsonwebtoken');
 const jwtutils = require('../utils/jwt.utils');
 const express = require('express');
 const app = express();
+const cle = "EjX2VDdx7TjpM6BEMDmAg33L46t0ADgu"
 
+//const Personne = require('./tables/personne')
 const jwt_decode = require('jwt-decode')
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
@@ -19,7 +21,7 @@ const sequelize = new Sequelize({
 let jwtOptions = {};
 
 //Create user model
-/*const Personne = sequelize.define(
+const Personne = sequelize.define(
   'Personne', {
       idPers: {
           type: Sequelize.INTEGER,
@@ -53,6 +55,10 @@ let jwtOptions = {};
       },
       sexe: {
           type: Sequelize.STRING
+      },
+      isAdmin:{
+          type: Sequelize.TINYINT,
+          defaultValue:0
       }
   });
 
@@ -61,8 +67,8 @@ let jwtOptions = {};
   .catch(err => console.log('Oups ça ne marche pas'));
 
 //Fonctions d'aide
-const createUser = async ({idPers, prenom, nom, numTel, enRecherche, mail, mdp, sexe}) => {
-  return await Personne.create({idPers, prenom, nom, numTel, enRecherche, mail, mdp, sexe});
+const createUser = async ({idPers, prenom, nom, numTel, enRecherche, mail, mdp, sexe, isAdmin}) => {
+  return await Personne.create({idPers, prenom, nom, numTel, enRecherche, mail, mdp, sexe, isAdmin});
 };
 
 const getAllUsers = async () => {
@@ -74,16 +80,17 @@ const getUser = async obj => {
       where: obj,
   });
 };
-*/
+
+
 
 
 module.exports = {
   login: async function(req,res){
-    jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-    jwtOptions.secretOrKey = 'wowwow';
+    //jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+    //jwtOptions.secretOrKey = 'wowwow';
 
     //Strategy web token
-    let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
+    /*let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
         console.log('payload received ', jwt_payload);
         //console.log(jwt_payload.id);
         let user = getUser({id: jwt_payload.id});
@@ -92,50 +99,52 @@ module.exports = {
         } else {
             next(null, false);
         }
-    });
+    });*/
 
     //use the strategy
-    passport.use(strategy);
-    app.use(passport.initialize());
+   // passport.use(strategy);
+    //app.use(passport.initialize());
 
 
     const mail = req.body.mail;
-      const mdp = req.body.mdp;
-      if (mail && mdp) {
-          let user = await getUser({mail});
-          if (!user) {
-              res.status(401).json({msg: "Utilisateur non trouvé", user});
-          }
-          if (mdp!=null && user.mdp === mdp ) {
-              
-            let payload = {idPers: user.idPers};              
-            let token = jwt.sign(payload, jwtOptions.secretOrKey);
-            console.log(token);
-            
-           
+    const mdp = req.body.mdp;
+    if (mail && mdp) {
+        let user = await getUser({mail});
+        if (!user) {
+            res.status(401).json({msg: "Utilisateur non trouvé", user});
+        }
+        if (mdp!=null && user.mdp === mdp ) {            
+            let payload = {idPers: user.idPers, prenom : user.prenom, nom : user.nom, isAdmin : user.isAdmin};              
+            //let token = jwt.sign(payload,jwtOptions.secretOrKey);
+            let token = jwt.sign(payload,cle);
+            res.cookie('toto',token)
+            //console.log(req.headers.cookie)
+            //console.log(token);
+          
+        
             var link = res.redirect('/profil')
             return link
-          
-          } else {
-              var link = res.status(401).json({msg: "Mot de passe incorrect"});
-              return link;
-          }
-      }
+        
+       } else {
+            var link = res.status(401).json({msg: "Mot de passe incorrect"});
+            return link;
+        }
+    }
   },
 
   register: function(req,res,next){
-    const {prenom, nom, numTel, enRecherche, mail, mdp, sexe} = req.body;
+    const {prenom, nom, numTel, enRecherche, mail, mdp, sexe,isAdmin} = req.body;
     const mdp1 = req.body.mdp1;
     if (mdp === mdp1) {
         if (check.checkAll(prenom, nom, numTel)) {
-            createUser({prenom, nom, numTel, enRecherche, mail, mdp, sexe}).then(Personne =>
+            createUser({prenom, nom, numTel, enRecherche, mail, mdp, sexe, isAdmin}).then(Personne =>
                 res.render('success')
             )
         } else {
             res.json({Personne, msg: "Elements incorrects"})
         }
     } else {
-        res.json({Personne, msg: "Mots de passe invalides"});
+        res.json({Personne, msg: "Mot de passe invalide"});
     } 
   }
 }

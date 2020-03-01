@@ -10,6 +10,7 @@ faire les profils :
 	- affiche nom et prénom
 	- résultats des tests
 	- Bouton déconnexion 
+	- Rajout date expiration
 
 faire une navbar 
 	- accès aux tests
@@ -19,3 +20,4 @@ page des tests
 	- 2 tests différents
 
 Se renseigner passport-jwt
+RAAJOUT DES STATUS
