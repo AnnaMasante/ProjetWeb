@@ -1,4 +1,8 @@
-module.exports = (sequelize, DataTypes) => {
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize({
+    dialect:'sqlite',
+    storage:'bdd.sqlite'
+  })
     const Resultat = sequelize.define(
     'Resultat',{
         idResultat:{
@@ -8,6 +12,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         libelleResultat:{
             type:Sequelize.STRING
+        },
+        scoreMin:{
+            type: Sequelize.INTEGER
+        },
+        scoreMax:{
+            type:Sequelize.INTEGER
         }
 
     });
@@ -23,4 +33,3 @@ Resultat.sync()
     }
 
     return Resultat;
-}

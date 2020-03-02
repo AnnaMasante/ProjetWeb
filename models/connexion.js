@@ -117,7 +117,7 @@ module.exports = {
             let payload = {idPers: user.idPers, prenom : user.prenom, nom : user.nom, isAdmin : user.isAdmin};              
             //let token = jwt.sign(payload,jwtOptions.secretOrKey);
             let token = jwt.sign(payload,cle);
-            res.cookie('toto',token)
+            res.cookie('toto',token,{expiresIn:'1h',httpOnly: true})
             //console.log(req.headers.cookie)
             //console.log(token);
           
@@ -147,5 +147,9 @@ module.exports = {
         res.json({Personne, msg: "Mot de passe invalide"});
     } 
   },
-  Personne,
+
+    logout: function(req,res){
+        res.clearCookie("jwt")
+        res.redirect('/users/login')
+    }
 }

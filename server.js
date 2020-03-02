@@ -5,6 +5,7 @@ const app = express();
 const check = require('./controllers/verifRegister');
 let passport = require('./utils/jwt.utils');
 let models = require('./models/connexion');
+let CreerTest = require("./models/CreerTest")
 const verifToken = require("./controllers/verifToken")
 const controllers = require("./controllers/usrCtrl")
 app.use(bodyParser.json());
@@ -41,7 +42,9 @@ app.get('/profil', verifToken, controllers.getProfil, function(req,res){
     console.log(req.Personne.isAdmin)
     //res.render('profil',{isAdmin: req.Personne.isAdmin});
 })
+/*app.get('/profil',verifToken,controllers.updateUserProfil, function(req,res){
 
+})*/
 app.get('/login', function (req, res) {
     res.render('login');
 });
@@ -50,6 +53,16 @@ app.get('/profil/hubert', function(req,res){
     res.render('hubert');
 })
 
+app.get('/profil/creerTest',verifToken, function(req,res){
+    res.render('creerTest')
+})
+app.post('/profil/creerTest',function(req,res){
+    return CreerTest.getTest(req,res)
+})
+
+app.get("/profil/logout",verifToken,function(req,res){
+    return models.logout(req,res)
+})
 //On démarre le serveur
 app.listen(3000, function () {
     console.log('Express running sur le port 3000');

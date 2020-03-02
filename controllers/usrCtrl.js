@@ -22,4 +22,19 @@ const getProfil = (req,res,next) => {
     })    
 }
 
+const updateUserProfil = (req,res,next) => {
+    let userId = req.Personne.idPers
+    models.Personne.findOne({
+        attributes:['idPers','nom','prenom','mail'],
+        where: {idPers : userId }
+    }).then(function(user){
+        if (user)
+        res.status(200)
+        user.prenom=prenom
+        user.nom=nom
+        user.mail=mail
+    })
+}
+
+
 module.exports = {getProfil}

@@ -11,6 +11,7 @@ faire les profils :
 	- résultats des tests
 	- Bouton déconnexion 
 	- Rajout date expiration
+	- finir les update de profils
 
 faire une navbar 
 	- accès aux tests
