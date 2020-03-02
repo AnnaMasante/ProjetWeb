@@ -146,5 +146,6 @@ module.exports = {
     } else {
         res.json({Personne, msg: "Mot de passe invalide"});
     } 
-  }
+  },
+  Personne,
 }

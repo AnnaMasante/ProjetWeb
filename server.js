@@ -38,7 +38,8 @@ app.post('/login', async function(req,res,next){
 
 
 app.get('/profil', verifToken, controllers.getProfil, function(req,res){
-    res.render('profil',{req: req.Personne.isAdmin});
+    console.log(req.Personne.isAdmin)
+    //res.render('profil',{isAdmin: req.Personne.isAdmin});
 })
 
 app.get('/login', function (req, res) {
