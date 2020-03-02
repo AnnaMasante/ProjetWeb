@@ -10,7 +10,8 @@ const getProfil = (req,res,next) => {
     }).then(function(user){
         if(user){
             res.status(201)
-            res.render('profil',{isAdmin: req.Personne.isAdmin})
+            console.log(user)
+            res.render('profil',{isAdmin: req.Personne.isAdmin,user : user})
         }else{
             res.status(404)
             res.render('profil')
