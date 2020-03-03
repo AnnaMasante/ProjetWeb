@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const models = require("../models/connexion")
+const models = require("../models/db/models");
 
 const getProfil = (req,res,next) => {
     let userId = req.Personne.idPers

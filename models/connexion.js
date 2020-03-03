@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken');
 const jwtutils = require('../utils/jwt.utils');
 const express = require('express');
 const app = express();
-const cle = "EjX2VDdx7TjpM6BEMDmAg33L46t0ADgu"
+const cle = "EjX2VDdx7TjpM6BEMDmAg33L46t0ADgu";
 
 //const Personne = require('./tables/personne')
-const jwt_decode = require('jwt-decode')
+const jwt_decode = require('jwt-decode');
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
 let ExtractJwt = passportJWT.ExtractJwt;
@@ -16,55 +16,14 @@ let JwtStrategy = passportJWT.Strategy;
 const sequelize = new Sequelize({
   dialect:'sqlite',
   storage:'bdd.sqlite'
-})
+});
 
 let jwtOptions = {};
 
-//Create user model
-const Personne = sequelize.define(
-  'Personne', {
-      idPers: {
-          type: Sequelize.INTEGER,
-          primaryKey: true,
-          autoIncrement: true
-      },
-      prenom: {
-          type: Sequelize.STRING
-      },
-      nom: {
-          type: Sequelize.STRING
-      },
-      numTel: {
-          type: Sequelize.INTEGER
-      },
-      enRecherche: {
-          type: Sequelize.TINYINT,
-          defaultValue: 0
-      },
-      mail: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          unique: true,
-          validate: {
-              isEmail: true,
-              notEmpty: true,
-          }
-      },
-      mdp: {
-          type: Sequelize.STRING
-      },
-      sexe: {
-          type: Sequelize.STRING
-      },
-      isAdmin:{
-          type: Sequelize.TINYINT,
-          defaultValue:0
-      }
-  });
+//const Personne = require('./personne')(sequelize, Sequelize.DataTypes);
+//const Question = require('./question')(sequelize, Sequelize.DataTypes);
+//const Reponse = require('./reponse')(sequelize, Sequelize.DataTypes);
 
-  Personne.sync()
-  .then(() => console.log('Table de Personne créée'))
-  .catch(err => console.log('Oups ça ne marche pas'));
 
 //Fonctions d'aide
 const createUser = async ({idPers, prenom, nom, numTel, enRecherche, mail, mdp, sexe, isAdmin}) => {
@@ -151,5 +110,6 @@ module.exports = {
     logout: function(req,res){
         res.clearCookie("jwt")
         res.redirect('/users/login')
-    }
-}
+    },
+    Personne,
+};
