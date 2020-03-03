@@ -68,8 +68,10 @@ db.connect().then(() => {
     app.get("/profil/logout", verifToken, function (req, res) {
         return models.logout(req, res)
     })
+
+    var port = process.env.PORT || 3000
 //On démarre le serveur
-    app.listen(3000, function () {
+    app.listen(port, function () {
         console.log('Express running sur le port 3000');
     });
 }).catch((e) => {
