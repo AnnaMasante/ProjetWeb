@@ -6,17 +6,17 @@ const jwtutils = require('../utils/jwt.utils');
 const express = require('express');
 const app = express();
 const cle = "EjX2VDdx7TjpM6BEMDmAg33L46t0ADgu";
-
+const Personne = require('./db/models/personne')
 //const Personne = require('./tables/personne')
-const jwt_decode = require('jwt-decode');
-const passport = require('passport');
+/*const jwt_decode = require('jwt-decode');
+const passport = require('passport');*/
 const passportJWT = require('passport-jwt');
-let ExtractJwt = passportJWT.ExtractJwt;
+/*let ExtractJwt = passportJWT.ExtractJwt;
 let JwtStrategy = passportJWT.Strategy;
 const sequelize = new Sequelize({
   dialect:'sqlite',
   storage:'bdd.sqlite'
-});
+});*/
 
 let jwtOptions = {};
 
@@ -45,25 +45,6 @@ const getUser = async obj => {
 
 module.exports = {
   login: async function(req,res){
-    //jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-    //jwtOptions.secretOrKey = 'wowwow';
-
-    //Strategy web token
-    /*let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
-        console.log('payload received ', jwt_payload);
-        //console.log(jwt_payload.id);
-        let user = getUser({id: jwt_payload.id});
-        if (user) {
-            next(null, user);
-        } else {
-            next(null, false);
-        }
-    });*/
-
-    //use the strategy
-   // passport.use(strategy);
-    //app.use(passport.initialize());
-
 
     const mail = req.body.mail;
     const mdp = req.body.mdp;
@@ -74,12 +55,8 @@ module.exports = {
         }
         if (mdp!=null && user.mdp === mdp ) {            
             let payload = {idPers: user.idPers, prenom : user.prenom, nom : user.nom, isAdmin : user.isAdmin};              
-            //let token = jwt.sign(payload,jwtOptions.secretOrKey);
             let token = jwt.sign(payload,cle);
             res.cookie('toto',token,{expiresIn:'1h',httpOnly: true})
-            //console.log(req.headers.cookie)
-            //console.log(token);
-          
         
             var link = res.redirect('/profil')
             return link
@@ -111,5 +88,5 @@ module.exports = {
         res.clearCookie("jwt")
         res.redirect('/users/login')
     },
-    Personne,
+
 };

@@ -1,11 +1,14 @@
 const {connection} = require('../index');
 const {DataTypes} = require("sequelize");
-const Personne = require('./personne');
 
 const Test = connection.define('Test', {
     idTest: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true
+    },
+    libelleTest:{
+        type: DataTypes.STRING
     },
     nbQuestions: {
         type: DataTypes.INTEGER,
@@ -14,5 +17,6 @@ const Test = connection.define('Test', {
 }, {
     timestamps: false,
 });
+
 
 module.exports = Test;

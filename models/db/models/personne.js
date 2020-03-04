@@ -38,6 +38,9 @@ const Personne = connection.define('Personne', {
     isAdmin: {
         type: DataTypes.TINYINT,
         defaultValue: 0
+    },
+    idResultat: {
+        type: DataTypes.INTEGER,
     }
 }, {
     timestamps: false,

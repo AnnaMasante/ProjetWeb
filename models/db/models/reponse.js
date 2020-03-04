@@ -6,9 +6,13 @@ const Reponse = connection.define('Reponse', {
         idReponse: {
             type: DataTypes.STRING,
             primaryKey: true,
+            autoIncrement: true,
         },
         numReponse: {
             type: DataTypes.INTEGER
+        },
+        libelleReponse:{
+            type: DataTypes.STRING
         },
         idQuestion: {
             type: DataTypes.INTEGER,

@@ -6,7 +6,7 @@ const passport = require('./utils/jwt.utils');
 const CreerTest = require("./models/CreerTest")
 const verifToken = require("./controllers/verifToken")
 const controllers = require("./controllers/usrCtrl");
-
+const models = require('./models/connexion')
 const db = require('./models/db');
 
 db.connect().then(() => {
@@ -62,7 +62,7 @@ db.connect().then(() => {
         res.render('creerTest')
     })
     app.post('/profil/creerTest', function (req, res) {
-        return CreerTest.getTest(req, res)
+        return CreerTest.creerTest(req, res)
     })
 
     app.get("/profil/logout", verifToken, function (req, res) {
