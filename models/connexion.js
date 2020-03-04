@@ -54,6 +54,8 @@ module.exports = {
             res.status(401).json({msg: "Utilisateur non trouvé", user});
         }
         if (mdp!=null && user.mdp === mdp ) {            
+            console.log('IMPRESSION DE L ID')
+            console.log(user.idPers)
             let payload = {idPers: user.idPers, prenom : user.prenom, nom : user.nom, isAdmin : user.isAdmin};              
             let token = jwt.sign(payload,cle);
             res.cookie('toto',token,{expiresIn:'1h',httpOnly: true})
@@ -73,8 +75,8 @@ module.exports = {
     const mdp1 = req.body.mdp1;
     if (mdp === mdp1) {
         if (check.checkAll(prenom, nom, numTel)) {
-            createUser({prenom, nom, numTel, enRecherche, mail, mdp, sexe, isAdmin}).then(Personne =>
-                res.render('success')
+            createUser({prenom, nom, numTel, enRecherche, mail, mdp, sexe, isAdmin}).then(Personne =>  
+              res.render('success')
             )
         } else {
             res.json({Personne, msg: "Elements incorrects"})
@@ -82,6 +84,7 @@ module.exports = {
     } else {
         res.json({Personne, msg: "Mot de passe invalide"});
     } 
+    
   },
 
     logout: function(req,res){

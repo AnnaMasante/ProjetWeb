@@ -7,7 +7,7 @@ const connection = new Sequelize({
 
 const connect = () => {
     require('./models');
-    return connection.authenticate().then(() => connection.sync({force: true}));
+    return connection.authenticate().then(() => connection.sync());
 };
 
 module.exports = {

@@ -4,7 +4,7 @@ const Question = require('./question');
 
 const Reponse = connection.define('Reponse', {
         idReponse: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },

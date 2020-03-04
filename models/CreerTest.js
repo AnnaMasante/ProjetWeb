@@ -10,14 +10,15 @@ const createReponse = async ({idReponse,numReponse,libelleReponse,idQuestion}) =
 }
 const createTest = async ({idTest,libelleTest,nbQuestions}) =>{
     console.log('bbbbbbbbbbbbbbbbbbbbbbb')
-    return await Test.create(idTest,libelleTest,nbQuestions)
+    console.log(libelleTest)
+    return await Test.create({idTest,libelleTest,nbQuestions})
 }
 
 const getTest = async obj => {
     return await Test.findOne({
         where: obj,
-    })
-}
+    });
+  };
 const getQuestion = async obj => {
     return await Question.findOne({
         where : obj,
@@ -25,37 +26,51 @@ const getQuestion = async obj => {
 }
 module.exports = {
     creerTest: async function(req,res){
+        
         var libelleTest = req.body.test
         
-        await createTest({libelleTest})
+        if(libelleTest == null){
+            res.json('Libelle Vide impossible')
+            res.redirect('/profil/creerTest')
+        }
+        numQuestion = 20
+        await createTest({
+            libelleTest:libelleTest,
+            numQuestion:numQuestion})
+        var test = await getTest({libelleTest})
+        var idTest = test.idTest
         
-        var T = getTest({libelleTest})
-        console.log(T)
-        var idTest = Test.idTest
         var numQuestion = 1
-        console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
-        var libelleQuestion = req.body.q1
-        console.log(libelleQuestion)
-        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+        
+        var libelleQuestion = req.body.q1        
         await createQuestion({numQuestion,libelleQuestion,idTest})
-        var k1 = Question.idQuestion
+        var question = await getQuestion({libelleQuestion})
+        var k1 = question.idQuestion
+
         numQuestion = 2
         libelleQuestion = req.body.q2
         await createQuestion({numQuestion,libelleQuestion,idTest})
-        var k2 = Question.idQuestion
+        var question = await getQuestion({libelleQuestion})
+        var k2 = question.idQuestion
+        
         numQuestion = 3
         libelleQuestion = req.body.q3
         await createQuestion({numQuestion,libelleQuestion,idTest})
-        var k3 = Question.idQuestion
+        var question = await getQuestion({libelleQuestion})
+        var k3 = question.idQuestion
+        
         numQuestion = 4
         libelleQuestion = req.body.q4
         await createQuestion({numQuestion,libelleQuestion,idTest})
-        var k4 = Question.idQuestion
-        res.status(201).redirect('/profil')
+        var question = await getQuestion({libelleQuestion})
+        var k4 = question.idQuestion
+        //res.status(201).redirect('/profil')*/
 
-        var j = 1
+        var i = 1
         
+        var numReponse = 16
         while(i<17){
+
             if (i<5){
                 idQuestion = k1
             }
@@ -72,9 +87,13 @@ module.exports = {
             if(numReponse==0){
                 numReponse = 1
             }
-            libelleReponse = 
-            await createReponse({idReponse,numReponse,libelleReponse,idQuestion})
+            var j = i
+            libelleReponse = j.toString()
+            libelleReponse = req.body[libelleReponse]
+            console.log(req.body)
+            await createReponse({numReponse,libelleReponse,idQuestion})
+            i++
         }
+        return res.status(200).redirect('/profil')
     }
 }
-
