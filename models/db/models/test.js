@@ -12,8 +12,21 @@ const Test = connection.define('Test', {
     },
     nbQuestions: {
         type: DataTypes.INTEGER,
-        defaultValue: 20
+        defaultValue: 16
+    },
+    res1: {
+        type: DataTypes.STRING
+    },
+    res2: {
+        type: DataTypes.STRING
+    },
+    res3: {
+        type: DataTypes.STRING
+    },
+    res4: {
+        type: DataTypes.STRING
     }
+
 }, {
     timestamps: false,
 });

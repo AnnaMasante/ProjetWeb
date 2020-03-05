@@ -1,4 +1,4 @@
-const {Test, Question, Reponse} = require("../models/db/models");
+const {Test, Question, Reponse, Resultat} = require("../models/db/models");
 //Fonctions aide
 
 const createQuestion = async ({idQuestion,numQuestion,libelleQuestion,idTest}) => {
@@ -7,10 +7,13 @@ const createQuestion = async ({idQuestion,numQuestion,libelleQuestion,idTest}) =
 const createReponse = async ({idReponse,numReponse,libelleReponse,idQuestion}) =>{
     return await Reponse.create({idReponse,numReponse,libelleReponse,idQuestion})
 }
-const createTest = async ({idTest,libelleTest,nbQuestions}) =>{
+const createTest = async ({idTest,libelleTest,res1,res2,res3,res4,nbQuestions}) =>{
     console.log('bbbbbbbbbbbbbbbbbbbbbbb')
     console.log(libelleTest)
-    return await Test.create({idTest,libelleTest,nbQuestions})
+    return await Test.create({idTest,libelleTest,res1,res2,res3,res4,nbQuestions})
+}
+const createResultat = async ({idResultat,libellleResultat,scoreMin,scoreMax,idTest}) =>{
+    return await idResultat.create({idResultat,libellleResultat,scoreMin,scoreMax,idTest})
 }
 
 const getTest = async obj => {
@@ -35,7 +38,12 @@ module.exports = {
         numQuestion = 20
         await createTest({
             libelleTest:libelleTest,
-            numQuestion:numQuestion})
+            numQuestion:numQuestion,
+            res1 : null,
+            res2 : null,
+            res3 : null,
+            res4 : null,       
+        })
         var test = await getTest({libelleTest})
         var idTest = test.idTest
         
@@ -91,6 +99,31 @@ module.exports = {
             await createReponse({numReponse,libelleReponse,idQuestion})
             i++
         }
-        return res.status(200).redirect('/profil')
+
+            var libRes1 = req.body[17]
+            var libRes2 = req.body[18]
+            var libRes3 = req.body[19]
+            var libRes4 = req.body[20]
+            //on retrouve le test créé et on ajoute les résultats 
+            var tt =Test.findOne({
+                attributes:['idTest','res1','res2','res3','res4'],
+                where:{idTest : idTest}
+            })
+
+            if(tt){
+                var res1,res2,res3,res4;
+                Test.update({
+                    res1: (res1 ? res1 : libRes1),
+                    res2: (res2 ? res2 : libRes2),
+                    res3: (res3 ? res3 : libRes3),
+                    res4: (res4 ? res4 : libRes4),
+                    
+                },
+                {where :{idTest : idTest}})
+                return res.status(200).redirect('/profil')
+            }
+            else{
+                return res.status(500).json({'error': 'unable to verify test'})
+            }
     }
 }

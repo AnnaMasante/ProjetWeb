@@ -8,6 +8,7 @@ const verifToken = require("./controllers/verifToken")
 const usrCtrl = require("./controllers/usrCtrl");
 const testCtrl = require("./controllers/testCtrl")
 const models = require('./models/connexion')
+const calcultTest = require('./models/calculTest')
 const db = require('./models/db');
 
 db.connect().then(() => {
@@ -45,7 +46,7 @@ db.connect().then(() => {
 
 
     app.get('/profil', verifToken, usrCtrl.getProfil, function (req, res) {
-        //console.log(req.Personne.isAdmin)
+        //.log(req.Personne.isAdmin)
         res.render('profil',{isAdmin: req.Personne.isAdmin});
     })
     /*app.get('/profil',verifToken,controllers.updateUserProfil, function(req,res){
@@ -55,8 +56,8 @@ db.connect().then(() => {
         res.render('login');
     });
 
-    app.get('/profil/hubert', function (req, res) {
-        res.render('hubert');
+    app.get('/profil/hubert/:idTest', function (req, res) {
+        return testCtrl.getTest(req,res)
     })
 
     app.get('/profil/creerTest', verifToken, function (req, res) {
@@ -86,5 +87,8 @@ db.connect().then(() => {
     console.error(e);
     process.exit(1);
 */
+    app.post('/profil/hubert/:idTest',function(req,res){
+        return calcultTest.score(req,res)
+    })
 });
 

@@ -1,7 +1,7 @@
 const models = require("../models/db/models")
 
 
-const getTest = (req, res, next) => {
+const getTest = (req, res) => {
     let testId = req.params.idTest
     var result = models.Test.findOne({
         attributes:['idTest','libelleTest'],
@@ -10,12 +10,12 @@ const getTest = (req, res, next) => {
     .then(async function(result){
         if(result){
             
-            //console.log(testId)
+            
             var test = await models.Question.findAll({
                 attributes:['idQuestion','libelleQuestion','numQuestion','idTest'],
                 where:{idTest : testId}
             })
-            console.log(test)
+            
             var rep = []
             for(i=0; i<test.length;i++){
                 var k = test[i].idQuestion   
@@ -24,11 +24,10 @@ const getTest = (req, res, next) => {
                     where:{idQuestion : k}
                 })
             }
-            console.log(rep)
             // result : tableau info du test
             // test : tableau des questions [Question{},...]
             // rep : tableau de 4 cases de 4 réponses [ [Reponse{},..],[...]]
-            res.render('hubert',{isAdmin : req.Personne.isAdmin,result : result, test,rep})
+            res.render('hubert',{result : result, test:test,rep:rep})
 
         }else{
             res.status(404)

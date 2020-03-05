@@ -9,16 +9,21 @@
 </head>
 <body>
     <p><%=result.libelleTest %></p>
-
-    <%for(i=0;i<5;i++){%>
-        <h1><%test[i].libelleQuestion%></h1>
-        <%for(j=0;j<5;j++){%>
-            <div>
-                <input type="radio" name=":j" value=<%rep[i][j].libelleQuestion%>>
-            </div>
+    <form  method="POST">
+    
+        <%for(i=0;i<4;i++){%>
+        <p><%=test[i].libelleQuestion%></p>
+        
+        <%for(j=0;j<4;j++){%>
+            
+                <input type="radio" name="<%=i+1%>" value="<%=j+1%>">
+                <label for="<%=rep[i][j].libelleReponse%>"><%=rep[i][j].libelleReponse%></label><br>
+            
         <%}%>
+        
     <%}%>
-
-
+    <input type="submit" value="Envoyer">
+    </form>
+    
 </body>
 </html>
