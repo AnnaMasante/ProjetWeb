@@ -1,5 +1,4 @@
 const {Test, Question, Reponse} = require("../models/db/models");
-
 //Fonctions aide
 
 const createQuestion = async ({idQuestion,numQuestion,libelleQuestion,idTest}) => {
@@ -64,7 +63,6 @@ module.exports = {
         await createQuestion({numQuestion,libelleQuestion,idTest})
         var question = await getQuestion({libelleQuestion})
         var k4 = question.idQuestion
-        //res.status(201).redirect('/profil')*/
 
         var i = 1
         
@@ -90,7 +88,6 @@ module.exports = {
             var j = i
             libelleReponse = j.toString()
             libelleReponse = req.body[libelleReponse]
-            console.log(req.body)
             await createReponse({numReponse,libelleReponse,idQuestion})
             i++
         }

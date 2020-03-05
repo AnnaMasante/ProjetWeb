@@ -1,11 +1,10 @@
-ante@et<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Login Form </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/style/style.css" type="text/html">
-    <script type="text/javascript" src="afficheInfo.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -43,29 +42,6 @@ ante@et<!DOCTYPE html>
     </form>
     <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
 
-    <!-- the fileinput plugin initialization -->
-    <script>
-        var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
-            'onclick="alert(\'Call your custom code here.\')">' +
-            '<i class="glyphicon glyphicon-tag"></i>' +
-            '</button>';
-        $("#avatar-1").fileinput({
-            overwriteInitial: true,
-            maxFileSize: 1500,
-            showClose: false,
-            showCaption: false,
-            browseLabel: '',
-            removeLabel: '',
-            browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
-            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-            removeTitle: 'Cancel or reset changes',
-            elErrorContainer: '#kv-avatar-errors-1',
-            msgErrorClass: 'alert alert-block alert-danger',
-            defaultPreviewContent: '<img src="/samples/default-avatar-male.png" alt="Your Avatar">',
-            layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
-            allowedFileExtensions: ["jpg", "png", "gif"]
-        });
-    </script>
     <table>
         <tr>
             <td>Nom : <%=user.nom%></td>
@@ -81,5 +57,10 @@ ante@et<!DOCTYPE html>
     <p>Voulez-vous changer vos informations personnelles ?</p>
 
     <a href="/profil/logout"><button type="button" class="btn btn-danger">Déconnexion</button></a>
+
+    
+    
+    
+   
 </body>
 </html>

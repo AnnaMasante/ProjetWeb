@@ -5,7 +5,8 @@ const check = require('./controllers/verifRegister');
 const passport = require('./utils/jwt.utils');
 const CreerTest = require("./models/CreerTest")
 const verifToken = require("./controllers/verifToken")
-const controllers = require("./controllers/usrCtrl");
+const usrCtrl = require("./controllers/usrCtrl");
+const testCtrl = require("./controllers/testCtrl")
 const models = require('./models/connexion')
 const db = require('./models/db');
 
@@ -43,9 +44,9 @@ db.connect().then(() => {
     });
 
 
-    app.get('/profil', verifToken, controllers.getProfil, function (req, res) {
-        console.log(req.Personne.isAdmin)
-        //res.render('profil',{isAdmin: req.Personne.isAdmin});
+    app.get('/profil', verifToken, usrCtrl.getProfil, function (req, res) {
+        //console.log(req.Personne.isAdmin)
+        res.render('profil',{isAdmin: req.Personne.isAdmin});
     })
     /*app.get('/profil',verifToken,controllers.updateUserProfil, function(req,res){
 
@@ -74,9 +75,16 @@ db.connect().then(() => {
     app.listen(port, function () {
         console.log('Express running sur le port 3000');
     });
+
+
+    app.get('/listeTest/:idTest',verifToken,testCtrl.getTest);
+    /*app.post('/listeTest/',function(req,res){
+        return 
+    })
 }).catch((e) => {
     console.error('Unable to connect to database.');
     console.error(e);
     process.exit(1);
+*/
 });
 

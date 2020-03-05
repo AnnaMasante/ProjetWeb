@@ -54,8 +54,6 @@ module.exports = {
             res.status(401).json({msg: "Utilisateur non trouvé", user});
         }
         if (mdp!=null && user.mdp === mdp ) {            
-            console.log('IMPRESSION DE L ID')
-            console.log(user.idPers)
             let payload = {idPers: user.idPers, prenom : user.prenom, nom : user.nom, isAdmin : user.isAdmin};              
             let token = jwt.sign(payload,cle);
             res.cookie('toto',token,{expiresIn:'1h',httpOnly: true})
@@ -89,7 +87,7 @@ module.exports = {
 
     logout: function(req,res){
         res.clearCookie("jwt")
-        res.redirect('/users/login')
+        res.redirect('/')
     },
 
 };

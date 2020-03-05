@@ -8,57 +8,17 @@
     <script type="text/javascrypt" src="../utils/quiz.js"></script>
 </head>
 <body>
+    <p><%=result.libelleTest %></p>
 
-    <div id="quiz">
-        <form action="" method="">
-            <p>Quelle est votre pièce préférée dans un appartement ?</p>
-            <ol>
-            <li name="1">La chambre</li>
-            <li name="2">La cuisine</li>
-            <li name="3">La salle de bain</li>
-            <li name="4">Le salon</li>
-            </ol>
+    <%for(i=0;i<5;i++){%>
+        <h1><%test[i].libelleQuestion%></h1>
+        <%for(j=0;j<5;j++){%>
+            <div>
+                <input type="radio" name=":j" value=<%rep[i][j].libelleQuestion%>>
+            </div>
+        <%}%>
+    <%}%>
 
-        <p>Savez-vous cuisiner ?</p>
-        
-            <ol>
-                <li name="5">Pas du tout! Je casse les spaghettis en deux</li>
-                <li name="6">Un peu, il m'arrive de mange des légumes</li>
-                <li name="7">Je me débrouille, je sais peler des patates</li>
-                <li name="8">Tout à fait, je suis le/la fils/fille de Etchebest</li>
-            </ol>
-            
 
-        <p>Quel est votre animal préféré ?</p>
-            <ol>
-                <li name="9">Le poisson rouge mais non nommé</li>
-                <li name="10">Le poisson rouge</li>
-                <li name="11">La gerbille</li>
-                <li name="12">Le hamster</li>
-            </ol>
-            
-        <p>Vous êtes malade, au bout de combien de temps vous rendez-vous chez le médecin ?</p>
-            <ol>            
-                <li name="13">Jamais, se soigner c'est tricher</li>
-                <li name="14">Au bout de 3 semaines, j'appelle ma grand-mère</li>
-                <li name="15">Au bout d'une semaine</li>
-                <li name="16">A la première quinte de toux</li>
-            </ol>  
-
-        <p>Etes-vous chauve ?</p>
-            <ol>
-                <li name="17">Oui, pas un seul poil sur le caillou</li>
-                <li name="18">J'ai des cheveux les soirs de pleine lune, les jours pairs, les années bisextiles</li>
-                <li name="19">Non</li>
-                <li name="20">Non j'ai tellement de cheveux que je ne sais pas quoi en faire, je pense à un leg</li>
-            </ol>
-        </form>
-
-        
-            
-    </div>
-    <button id="submit">Soumettre le quiz</button>
-    <div id="results"></div>
-    
 </body>
 </html>

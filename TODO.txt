@@ -22,3 +22,14 @@ page des tests
 
 Se renseigner passport-jwt
 RAAJOUT DES STATUS
+
+<!--
+    <p>Liste Tests</p>
+    <%for(i=0; i<findAll(Test).length;i++){ %>
+        <div>Libelle</div>
+        <p><%=Test.libelleTest%></p>
+        <a href="/test/<%=Test.idTest[i]%>">
+            <button>GOOOO</button>
+        </a>
+    <% }%>
+    -->
