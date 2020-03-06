@@ -9,6 +9,9 @@ const verifToken = (req, res, next) => {
             if(err) {console.log(err) 
                     return res.render("success")}
             req.Personne = Personne;
+            console.log('\n')
+            console.log(req.Personne)
+            console.log('\n')
             next();
         });
     }else{

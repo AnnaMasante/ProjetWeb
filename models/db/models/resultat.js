@@ -29,11 +29,11 @@ Resultat.belongsTo(Test, {
         allowNull: false,
     }
 });
-Resultat.belongsTo(Personne, {
+/*Resultat.belongsTo(Personne, {
     onDelete: 'CASCADE',
     foreignKey: {
         name: 'idPersonne',
         allowNull: false,
     }
-});
+});*/
 module.exports = Resultat;

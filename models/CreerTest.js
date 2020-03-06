@@ -1,4 +1,4 @@
-const {Test, Question, Reponse, Resultat} = require("../models/db/models");
+const {Test, Question, Reponse, Resultat,Score} = require("../models/db/models");
 //Fonctions aide
 
 const createQuestion = async ({idQuestion,numQuestion,libelleQuestion,idTest}) => {
@@ -8,13 +8,16 @@ const createReponse = async ({idReponse,numReponse,libelleReponse,idQuestion}) =
     return await Reponse.create({idReponse,numReponse,libelleReponse,idQuestion})
 }
 const createTest = async ({idTest,libelleTest,res1,res2,res3,res4,nbQuestions}) =>{
-    console.log('bbbbbbbbbbbbbbbbbbbbbbb')
     console.log(libelleTest)
     return await Test.create({idTest,libelleTest,res1,res2,res3,res4,nbQuestions})
 }
-const createResultat = async ({idResultat,libellleResultat,scoreMin,scoreMax,idTest}) =>{
-    return await idResultat.create({idResultat,libellleResultat,scoreMin,scoreMax,idTest})
+const createScore = async ({idScore,idTest,idPersonne}) =>{
+    return await Score.create({idScore,idTest,idPersonne})
 }
+/*
+const createResultat = async ({idResultat,libellleResultat,scoreMin,scoreMax,idTest,idPersonne}) =>{
+    return await idResultat.create({idResultat,libellleResultat,scoreMin,scoreMax,idTest,idPersonne})
+}*/
 
 const getTest = async obj => {
     return await Test.findOne({
@@ -26,8 +29,7 @@ const getQuestion = async obj => {
         where : obj,
     })
 }
-module.exports = {
-    creerTest: async function(req,res){
+const creerTest = async function(req,res){
         
         var libelleTest = req.body.test
         
@@ -126,4 +128,5 @@ module.exports = {
                 return res.status(500).json({'error': 'unable to verify test'})
             }
     }
-}
+
+module.exports = {createScore,creerTest}

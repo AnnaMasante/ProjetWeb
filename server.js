@@ -8,7 +8,7 @@ const verifToken = require("./controllers/verifToken")
 const usrCtrl = require("./controllers/usrCtrl");
 const testCtrl = require("./controllers/testCtrl")
 const models = require('./models/connexion')
-const calcultTest = require('./models/calculTest')
+const calculTest = require('./models/calculTest')
 const db = require('./models/db');
 
 db.connect().then(() => {
@@ -56,15 +56,13 @@ db.connect().then(() => {
         res.render('login');
     });
 
-    app.get('/profil/hubert/:idTest', function (req, res) {
-        return testCtrl.getTest(req,res)
-    })
+    
 
     app.get('/profil/creerTest', verifToken, function (req, res) {
         res.render('creerTest')
     })
-    app.post('/profil/creerTest', function (req, res) {
-        return CreerTest.creerTest(req, res)
+    app.post('/profil/creerTest', verifToken, function (req, res) {
+        return CreerTest.creerTest(req,res)
     })
 
     app.get("/profil/logout", verifToken, function (req, res) {
@@ -87,8 +85,18 @@ db.connect().then(() => {
     console.error(e);
     process.exit(1);
 */
-    app.post('/profil/hubert/:idTest',function(req,res){
-        return calcultTest.score(req,res)
+    app.get('/profil/hubert/:idTest', function (req, res) {
+        return testCtrl.getTest(req,res)
     })
+    app.post('/profil/hubert/:idTest',verifToken,function(req,res){
+        return calculTest.score(req,res)
+    })
+
+    app.get('/profil/resultat',verifToken,function(req,res){
+        return calculTest.getLibelleScore(req,res)
+    })
+    /*app.post('/profil/resultat', verifToken, function(req,res){
+        return calculTest.getLibelleScore
+    })*/
 });
 

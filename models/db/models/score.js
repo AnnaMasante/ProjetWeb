@@ -2,6 +2,7 @@ const {connection} = require('../index');
 const {DataTypes} = require("sequelize");
 const Test = require('./test');
 const Personne = require('./personne')
+const Resultat = require('./resultat')
 
 const Score = connection.define('Score', {
     idScore: {
@@ -9,13 +10,9 @@ const Score = connection.define('Score', {
         primaryKey: true,
         autoIncrement: true
     },
-    scoreMin: {
-        type: DataTypes.INTEGER
-    },
-    scoreMax: {
-        type: DataTypes.INTEGER
+    score:{
+        type: DataTypes.INTEGER,
     }
-
 }, {
     timestamps: false,
 });
@@ -29,8 +26,16 @@ Score.belongsTo(Test, {
 Score.belongsTo(Personne, {
     onDelete: 'CASCADE',
     foreignKey: {
-        name: 'idPersonne',
+        name: 'idPers',
         allowNull: false,
     }
-});
+})
+/*Score.belongsTo(Resultat,{
+    onDelete : 'CASCADE',
+    foreignKey:{
+        name : 'idResultat',
+        allowNull : false,
+
+    }
+});*/
 module.exports = Score;
