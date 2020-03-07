@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 const sequelize = require('sequelize')
+
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
@@ -12,7 +13,7 @@ let connection = new sequelize.Sequelize({
     storage:'db.sqlite'
 })
 
-connexion.authenticate().then(() => {
+/*connexion.authenticate().then(() => {
     console.log('Connected to database!');
 }).catch((err) => {
     console.error('Unable to connect to database');

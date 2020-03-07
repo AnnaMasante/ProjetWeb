@@ -67,7 +67,7 @@ db.connect().then(() => {
 
     app.get('/listeTest/:idTest',verifToken,testCtrl.getTest);
 
-    app.get('/profil/hubert/:idTest', function (req, res) {
+    app.get('/profil/hubert/:idTest', verifToken,function (req, res) {
         return testCtrl.getTest(req,res)
     })
     app.post('/profil/hubert/:idTest',verifToken,function(req,res){

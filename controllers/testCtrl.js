@@ -24,10 +24,11 @@ const getTest = (req, res) => {
                     where:{idQuestion : k}
                 })
             }
+            console.log(req.Personne.isAdmin)
             // result : tableau info du test
             // test : tableau des questions [Question{},...]
             // rep : tableau de 4 cases de 4 réponses [ [Reponse{},..],[...]]
-            res.render('hubert',{result : result, test:test,rep:rep})
+            res.render('hubert',{result : result, test:test,rep:rep, isAdmin : req.Personne.isAdmin})
 
         }else{
             res.status(404)
