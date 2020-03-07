@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login Form </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/style.css" type="text/html">
+    <script type="text/javascrypt" src="../utils/quiz.js"></script>
+</head>
+<body>
+    <form method="post">
+        <input name="test" placeholder="<%=result.libelleTest %>" type="text">
+        <br>
+        
+        <input name="q1" placeholder="<%=test[0].libelleQuestion%>" type="text">
+            <table>
+                <% for(let i=0; i < 4; i++) { %>
+                    <tr>
+                        <td><input name="<%=i+1%>" placeholder="<%= rep[0][i].libelleReponse %>" type="text"></td>
+                    </tr>
+                    <%}%>
+            </table>
+
+        <input name="q2" placeholder="<%=test[1].libelleQuestion%>" type="text">
+            <table>
+                <%for(i=0;i<4;i++){%>
+                    <tr>
+                        <td><input name="<%=4+i+1%>" placeholder="<%=rep[1][i].libelleReponse%>" type="text"></td>
+                    </tr>
+                    <%}%>
+            </table>
+        <input name="q3" placeholder="<%=test[2].libelleQuestion%>" type="text">
+        <table>
+            <%for(i=0;i<4;i++){%>
+                <tr>
+                    <td><input name="<%=2*4+i+1%>" placeholder="<%=rep[2][i].libelleReponse%>" type="text"></td>
+                </tr>
+                <%}%>
+        </table>
+        
+        <input name="q4" placeholder="<%=test[3].libelleQuestion%>" type="text">
+            <table>
+                <%for(i=0;i<4;i++){%>
+                    <tr>
+                        <td><input name="<%=3*4+i+1%>" placeholder="<%=rep[3][i].libelleReponse%>" type="text"></td>
+                    </tr>
+                    <%}%>
+                
+            </table>
+            
+        <p> Intitulé des résultats au test, il y a quatre résultats possibles </p>
+        <table>
+            <%for(i=0;i<4;i++){%>
+            <tr>
+                <td><input name="<%=4*4+i+1%>" placeholder="<%=rep[3][i].libelleReponse%>" type="text"></td>
+            </tr>
+            <%}%>
+        </table>    
+        <input type="submit">
+    </form>
+</body>
+</html>

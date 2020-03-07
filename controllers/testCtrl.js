@@ -38,6 +38,30 @@ const getTest = (req, res) => {
         res.status(500).send({error: 'Internal server error'})
     })
 }
+const modifTest = async (req, res) => {
+    let testId = req.params.idTest
+    var result = await models.Test.findOne({
+        attributes:['idTest','libelleTest'],
+        where:{idTest : testId}
+    })
+    
+    var test = await models.Question.findAll({
+        attributes:['idQuestion','libelleQuestion','numQuestion','idTest'],
+        where:{idTest : testId}
+    })
+
+    var rep = []
+    for(i=0; i<test.length;i++){
+        var k = test[i].idQuestion   
+        rep[i] = await models.Reponse.findAll({
+            attributes:['idReponse', 'numReponse','libelleReponse','idQuestion'],
+            where:{idQuestion : k}
+        })
+    }
+    console.log(rep[1][0].libelleReponse)
+    res.render('modifierTest',{result : result,test : test, rep : rep})
+}
 
 
-module.exports = {getTest}
+
+module.exports = {getTest, modifTest}

@@ -8,9 +8,15 @@
     <script type="text/javascrypt" src="../utils/quiz.js"></script>
 </head>
 <body>
+    <% if(isAdmin){ %>
+        <%-include("./navbar/admin")-%>
+    <% }else{%>
+        <%-include("./navbar/user") -%>
+    <% } %>
+    <p>Voici l'historique de vos résultats aux tests</p>
     <%for(i=0;i<libelleTest.length;i++){%>
-        <p><=%libelleTest[i]%></p>
-        <p><=%libelleResTest[i]%</p>
+        <p><%=libelleTest[i]%></p>
+        <p><%=libelleResTest[i]%></p>
     <%}%>
 
 </body>

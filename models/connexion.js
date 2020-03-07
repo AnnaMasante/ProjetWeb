@@ -7,6 +7,7 @@ const express = require('express');
 const app = express();
 const cle = "EjX2VDdx7TjpM6BEMDmAg33L46t0ADgu";
 const Personne = require('./db/models/personne')
+const password_hash = require('password-hash');
 //const Personne = require('./tables/personne')
 /*const jwt_decode = require('jwt-decode');
 const passport = require('passport');*/
@@ -53,7 +54,7 @@ module.exports = {
         if (!user) {
             res.status(401).json({msg: "Utilisateur non trouvé", user});
         }
-        if (mdp!=null && user.mdp === mdp ) {            
+        if (mdp!=null && password_hash.verify(mdp,user.mdp) ) {            
             let payload = {idPers: user.idPers, prenom : user.prenom, nom : user.nom, isAdmin : user.isAdmin};              
             let token = jwt.sign(payload,cle);
             res.cookie('toto',token,{expiresIn:'1h',httpOnly: true})
@@ -69,10 +70,12 @@ module.exports = {
   },
 
   register: function(req,res,next){
-    const {prenom, nom, numTel, enRecherche, mail, mdp, sexe,isAdmin} = req.body;
+    let {prenom, nom, numTel, enRecherche, mdp, mail, sexe,isAdmin} = req.body;
     const mdp1 = req.body.mdp1;
     if (mdp === mdp1) {
         if (check.checkAll(prenom, nom, numTel)) {
+          mdp = password_hash.generate(req.body["mdp"]);
+          console.log(mdp);
             createUser({prenom, nom, numTel, enRecherche, mail, mdp, sexe, isAdmin}).then(Personne =>  
               res.render('success')
             )

@@ -36,7 +36,8 @@ module.exports = {
     })
 
     //console.log(this.getLibelleScore(req,res))
-    res.render('profil')
+    res.redirect('/profil')
+    //res.render('profil',{isAdmin: req.Personne.isAdmin, user:req.Personne})
     },
 
     getLibelleScore : async function(req,res){
@@ -44,31 +45,29 @@ module.exports = {
         let AllScore = await Score.findAll({
             attributes : ['idTest','idPers','score'],
             where:{idPers : idPersonne}
-        }) 
+        }) //je récupère tous les Scores de la personne connectée
         let libelleResTest = []
         let libelleTest = []
         for(i=0;i<AllScore.length;i++){
             let idT = AllScore[i].idTest
-            let TestInfo = Test.findOne({
+            let TestInfo = await Test.findOne({
                 attributes : ['idTest','libelleTest','res1','res2','res3','res4'],
-                where : {idTest : idT}
+                where : {idTest : idT,
+                }
             })
             libelleTest.push(TestInfo.libelleTest)
 
-            if(score<5){
+            if(AllScore[i].score<5){
                 libelleResTest.push(TestInfo.res1)
             }
-            else if(score<9){
+            else if(AllScore[i].score<9){
                 libelleResTest.push(TestInfo.res2)
-            }else if(score<13){
+            }else if(AllScore[i].score<13){
                 libelleResTest.push(TestInfo.res3)
             }else{
                 libelleResTest.push(TestInfo.res4)
             }
         }
-        console.log('jijijijijijijji\n')
-        console.log(libelleResTest)
-        console.log(libelleTest)
-        res.render('mesResultats',{libelleResTest, libelleTest}) 
+        res.render('mesResultats',{libelleResTest, libelleTest,isAdmin : req.Personne.isAdmin}) 
     }
 }

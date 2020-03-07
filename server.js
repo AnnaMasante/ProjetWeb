@@ -49,14 +49,10 @@ db.connect().then(() => {
         //.log(req.Personne.isAdmin)
         res.render('profil',{isAdmin: req.Personne.isAdmin});
     })
-    /*app.get('/profil',verifToken,controllers.updateUserProfil, function(req,res){
 
-    })*/
     app.get('/login', function (req, res) {
         res.render('login');
     });
-
-    
 
     app.get('/profil/creerTest', verifToken, function (req, res) {
         res.render('creerTest')
@@ -69,22 +65,8 @@ db.connect().then(() => {
         return models.logout(req, res)
     })
 
-    var port = process.env.PORT || 3000
-//On démarre le serveur
-    app.listen(port, function () {
-        console.log('Express running sur le port 3000');
-    });
-
-
     app.get('/listeTest/:idTest',verifToken,testCtrl.getTest);
-    /*app.post('/listeTest/',function(req,res){
-        return 
-    })
-}).catch((e) => {
-    console.error('Unable to connect to database.');
-    console.error(e);
-    process.exit(1);
-*/
+
     app.get('/profil/hubert/:idTest', function (req, res) {
         return testCtrl.getTest(req,res)
     })
@@ -95,8 +77,16 @@ db.connect().then(() => {
     app.get('/profil/resultat',verifToken,function(req,res){
         return calculTest.getLibelleScore(req,res)
     })
-    /*app.post('/profil/resultat', verifToken, function(req,res){
-        return calculTest.getLibelleScore
-    })*/
+    
+    app.get('/profil/modifierTest/:idTest',verifToken,function(req,res){
+        return testCtrl.modifTest(req,res)
+    })
+    app.post('/profil/modifierTest/:idTest',verifToken,function(req,res){
+        return CreerTest.updateTest(req,res)
+    })
+    //On démarre le serveur
+    var port = process.env.PORT || 3000
+    app.listen(port, function () {
+        console.log('Express running sur le port 3000');
+    });    
 });
-
