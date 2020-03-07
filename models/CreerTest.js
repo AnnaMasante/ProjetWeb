@@ -164,8 +164,7 @@ const creerTest = async function(req,res){
         updateReponse(req,idT);
         updateResultat(req,idT);
 
-        res.redirect('/profil')
-        
+
     }
     const updateQuestion = async function(req,idTest,test){
         lib = [req.body.q1,req.body.q2,req.body.q3,req.body.q4]
@@ -262,5 +261,13 @@ const creerTest = async function(req,res){
         }
             
     }
+}
+
+const deleteTest = async function(req,res){
+    Test.destroy({
+        where:{ idTest : idT}
+    });
+    res.redirect('/profil')
+    
 }
 module.exports = {createScore,creerTest,updateTest}
