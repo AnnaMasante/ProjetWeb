@@ -4,11 +4,7 @@ const models = require('./db/models/score')
 const createScore = async ({idScore,score,idTest,idPers}) =>{
     return await Score.create({idScore,score,idTest,idPers})
 }
-/*const getResultat = async obj => {
-    return await Resultat.findOne({
-        where : obj,
-    })
-}*/
+
 const getTest = async obj => {
     return await Test.findOne({
         where: obj,
@@ -75,6 +71,13 @@ module.exports = {
         let AllTest = await Test.findAll({})
         console.log(AllTest)
         res.render('listeTest',{AllTest,isAdmin : req.Personne.isAdmin}) 
+    },
+
+    getLibelleTestLien : async function(req,res){
+        let idPersonne = req.Personne.idPers
+        let AllTest = await Test.findAll({})
+        console.log(AllTest)
+        res.render('listeTestModif',{AllTest,user : req.Personne.idPers}) 
     }
     
 }

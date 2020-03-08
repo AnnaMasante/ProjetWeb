@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login Form </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/style.css" type="text/html">
+    <script type="text/javascrypt" src="../utils/quiz.js"></script>
+</head>
+<body>
+    <header>
+        
+        <%if(user == 1){ %>
+            <%-include("./navbar/admin")-%>
+        <% }else{%>
+            <%-include("./navbar/user") -%>
+        <% } %>
+    </header>
+    <p> Choisissez le test que vous souhaitez</p>
+        <%for(i=0;i<AllTest.length;i++){%>
+           <p><a href="/profil/modifierTest/<%=AllTest[i].idTest%>"><%=AllTest[i].libelleTest%></a></p>
+
+        <%}%>
+    
+</body>
+</html>
