@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="/style/style.css" type="text/html">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Roomies</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
 
     <% if(isAdmin){ %>
         <%-include("./navbar/admin")-%>
@@ -20,10 +14,11 @@
         <%-include("./navbar/user") -%>
     <% } %>
 
-    <p> Libelle : <%=result.libelleTest%></p>
+    <p> Choisissez le test que vous souhaitez</p>
+        <%for(i=0;i<AllTest.length;i++){%>
+           <p><a href="/profil/hubert/<%=AllTest[i].idTest%>"><%=AllTest[i].libelleTest%></a></p>
 
-    
-
+        <%}%>
     
 </body>
 </html>

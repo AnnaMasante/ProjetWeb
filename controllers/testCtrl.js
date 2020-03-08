@@ -24,11 +24,10 @@ const getTest = (req, res) => {
                     where:{idQuestion : k}
                 })
             }
-            console.log(req.Personne.isAdmin)
             // result : tableau info du test
             // test : tableau des questions [Question{},...]
             // rep : tableau de 4 cases de 4 réponses [ [Reponse{},..],[...]]
-            res.render('hubert',{result : result, test:test,rep:rep, isAdmin : req.Personne.isAdmin})
+            res.render('hubert',{result : result, test:test,rep:rep})
 
         }else{
             res.status(404)
@@ -39,6 +38,9 @@ const getTest = (req, res) => {
         res.status(500).send({error: 'Internal server error'})
     })
 }
+
+
+
 const modifTest = async (req, res) => {
     let testId = req.params.idTest
     var result = await models.Test.findOne({

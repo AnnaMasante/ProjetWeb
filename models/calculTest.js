@@ -69,5 +69,12 @@ module.exports = {
             }
         }
         res.render('mesResultats',{libelleResTest, libelleTest,isAdmin : req.Personne.isAdmin}) 
+    },
+    getLibelleTest : async function(req,res){
+        let idPersonne = req.Personne.idPers
+        let AllTest = await Test.findAll({})
+        console.log(AllTest)
+        res.render('listeTest',{AllTest,isAdmin : req.Personne.isAdmin}) 
     }
+    
 }

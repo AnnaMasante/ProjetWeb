@@ -46,7 +46,8 @@ db.connect().then(() => {
 
 
     app.get('/profil', verifToken, usrCtrl.getProfil, function (req, res) {
-        //.log(req.Personne.isAdmin)
+        console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+        console.log(req.Personne.idPers)
         res.render('profil',{isAdmin: req.Personne.isAdmin});
     })
 
@@ -65,7 +66,7 @@ db.connect().then(() => {
         return models.logout(req, res)
     })
 
-    app.get('/listeTest/:idTest',verifToken,testCtrl.getTest);
+    app.get('/profil/listeTest/',verifToken,calculTest.getLibelleTest);
 
     app.get('/profil/hubert/:idTest', verifToken,function (req, res) {
         return testCtrl.getTest(req,res)

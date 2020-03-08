@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-    <% if(isAdmin){ %>
+    <% if(user.idPers == 1){ %>
         <%-include("./navbar/admin")-%>
     <% }else{%>
         <%-include("./navbar/user") -%>

@@ -1,19 +1,25 @@
-<nav class="collapse navbar-collapse" id="navbarSupportedContent">  
-    <ul class="navbar-nav mr-auto">
-        <form action="/profil/Test" method="get">
-            <li class="nav-item">
-                <a class="nav-link " href="#">Tests de personnalité :D</a>
-            </li>
-        </form>
-        <form action="/profil/creerTest" method="get">
-            <li class="nav-item">
-                <a class="nav-link " href="#">Créer un Test</a>
-            </li>
-        </form>
-        <form action="/profil/modifierTest" method="get">
-            <li class="nav-item">
-                <a class="nav-link " href="#">Modifier un test</a>
-            </li>
-        </form>
-    </ul>
-</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Roomies</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/profil">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profil/listeTest">Tests de personnalité</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profil/resultat">Mes résultats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/profil/resultat">Modifier un test</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/profil/creerTest">Créer un test</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
