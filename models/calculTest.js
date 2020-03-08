@@ -64,13 +64,13 @@ module.exports = {
                 libelleResTest.push(TestInfo.res4)
             }
         }
-        res.render('mesResultats',{libelleResTest, libelleTest,isAdmin : req.Personne.isAdmin}) 
+        res.render('mesResultats',{libelleResTest, libelleTest,user : req.Personne.idPers}) 
     },
     getLibelleTest : async function(req,res){
         let idPersonne = req.Personne.idPers
         let AllTest = await Test.findAll({})
         console.log(AllTest)
-        res.render('listeTest',{AllTest,isAdmin : req.Personne.isAdmin}) 
+        res.render('listeTest',{AllTest,user : req.Personne.idPers}) 
     },
 
     getLibelleTestLien : async function(req,res){
