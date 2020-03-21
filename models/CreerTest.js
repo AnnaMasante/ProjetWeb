@@ -22,7 +22,7 @@ const createResultat = async ({idResultat,libellleResultat,scoreMin,scoreMax,idT
 const getTest = async obj => {
     return await Test.findOne({
         where: obj,
-    });
+    })
   };
 const getQuestion = async obj => {
     return await Question.findOne({
@@ -153,7 +153,7 @@ const creerTest = async function(req,res){
         var libTest  = req.body.test
         
         if(libTest != ""){
-            var test = getTest({libelleTest})
+            var test = getTest({libelleTest : libTest})
             (await test).update({
                 libelleTest:(libelleTest ? libelleTest : libTest),
             })
@@ -164,6 +164,7 @@ const creerTest = async function(req,res){
         updateReponse(req,idT);
         updateResultat(req,idT);
 
+        return res.redirect('/profil/modifierTest')
 
     }
     const updateQuestion = async function(req,idTest,test){
@@ -270,4 +271,4 @@ const deleteTest = async function(req,res,idT){
     res.redirect('/profil')
     
 }
-module.exports = {createScore,creerTest,updateTest}
+module.exports = {createScore,creerTest,updateTest,deleteTest}

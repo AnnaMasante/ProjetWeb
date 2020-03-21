@@ -77,7 +77,7 @@ module.exports = {
           mdp = password_hash.generate(req.body["mdp"]);
           console.log(mdp);
             createUser({prenom, nom, numTel, enRecherche, mail, mdp, sexe, isAdmin}).then(Personne =>  
-              res.render('success')
+              res.render('login')
             )
         } else {
             res.json({Personne, msg: "Elements incorrects"})

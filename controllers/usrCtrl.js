@@ -13,7 +13,6 @@ const getProfil = async (req,res,next) => {
     }).then(function(user){
         if(user){
             res.status(201)
-            console.log(user)
             res.render('profil',{isAdmin: req.Personne.isAdmin,user : user,donnes_user})
         }else{
             res.status(404)

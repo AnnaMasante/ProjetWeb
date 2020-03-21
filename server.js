@@ -78,8 +78,8 @@ db.connect().then(() => {
     app.get('/profil/resultat',verifToken,function(req,res){
         return calculTest.getLibelleScore(req,res)
     })
-
-    app.get('/profil/modifierTest',verifToken,calculTest.getLibelleTestLien)    
+    
+    app.get('/profil/modifierTest/',verifToken,calculTest.getLibelleTestModif);
 
     app.get('/profil/modifierTest/:idTest',verifToken,function(req,res){
         return testCtrl.modifTest(req,res)

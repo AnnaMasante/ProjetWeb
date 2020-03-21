@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <%if(user == 1){ %>
+    <% if(isAdmin){ %>
         <%-include("./navbar/admin")-%>
     <% }else{%>
         <%-include("./navbar/user") -%>
